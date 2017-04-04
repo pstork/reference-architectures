@@ -1,0 +1,130 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualMachinesSettings": {
+      "value": {
+        "namePrefix": "ra-multi",
+        "computerNamePrefix": "cn",
+        "size": "Standard_DS1_v2",
+        "osType": "windows",
+        "adminUsername": "testuser",
+        "adminPassword": "AweS0me@PW",
+        "sshPublicKey": "",
+        "osAuthenticationType": "password",
+        "nics": [
+          {
+            "isPublic": "false",
+            "subnetName": "web",
+            "privateIPAllocationMethod": "dynamic",
+            "publicIPAllocationMethod": "dynamic",
+            "isPrimary": "true",
+            "enableIPForwarding": false,
+            "domainNameLabelPrefix": "",
+            "dnsServers": [ ]
+          }
+        ],
+        "imageReference": {
+          "publisher": "MicrosoftWindowsServer",
+          "offer": "WindowsServer",
+          "sku": "2012-R2-Datacenter",
+          "version": "latest"
+        },
+        "dataDisks": {
+          "count": 1,
+          "properties": {
+            "diskSizeGB": 128,
+            "caching": "None",
+            "createOption": "Empty"
+          }
+        },
+        "osDisk": {
+          "caching": "ReadWrite"
+        },
+        "extensions": [
+          {
+            "name": "iis-config-ext",
+            "settingsConfigMapperUri": "https://raw.githubusercontent.com/mspnp/template-building-blocks/v1.0.0/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+            "publisher": "Microsoft.Powershell",
+            "type": "DSC",
+            "typeHandlerVersion": "2.20",
+            "autoUpgradeMinorVersion": true,
+            "settingsConfig": {
+              "modulesUrl": "https://raw.githubusercontent.com/mspnp/reference-architectures/master/virtual-machines/multi-vm/extensions/windows/iisaspnet.ps1.zip",
+              "configurationFunction": "iisaspnet.ps1\\iisaspnet"
+            },
+            "protectedSettingsConfig": { }
+          }
+        ],
+        "availabilitySet": {
+          "useExistingAvailabilitySet": "No",
+          "name": "ra-multi-vm-as"
+        }
+      }
+    },
+    "loadBalancerSettings": {
+      "value": {
+        "name": "ra-multi-vm-lb",
+        "frontendIPConfigurations": [
+          {
+            "name": "ra-multi-vm-lb-fe-config1",
+            "loadBalancerType": "public",
+            "domainNameLabel": "",
+            "internalLoadBalancerSettings": { }
+          }
+        ],
+        "loadBalancingRules": [
+          {
+            "name": "lbr1",
+            "frontendPort": 80,
+            "backendPort": 80,
+            "protocol": "Tcp",
+            "backendPoolName": "ra-multi-vm-lb-bep1",
+            "frontendIPConfigurationName": "ra-multi-vm-lb-fe-config1",
+            "enableFloatingIP": false,
+            "probeName": "lbp1"
+          }
+        ],
+        "probes": [
+          {
+            "name": "lbp1",
+            "port": 80,
+            "protocol": "Http",
+            "requestPath": "/"
+          }
+        ],
+        "backendPools": [
+          {
+            "name": "ra-multi-vm-lb-bep1",
+            "nicIndex": 0
+          }
+        ],
+        "inboundNatRules": [
+          {
+            "namePrefix": "rdp",
+            "frontendIPConfigurationName": "ra-multi-vm-lb-fe-config1",
+            "startingFrontendPort": 50000,
+            "backendPort": 3389,
+            "natRuleType": "All",
+            "protocol": "Tcp",
+            "nicIndex": 0
+          }
+        ]
+      }
+    },
+    "virtualNetworkSettings": {
+      "value": {
+        "name": "ra-multi-vm-vnet",
+        "resourceGroup": "ra-multi-vm-rg"
+      }
+    },
+    "buildingBlockSettings": {
+      "value": {
+        "storageAccountsCount": 1,
+        "vmCount": 2,
+        "vmStartIndex": 1
+      }
+    }
+  }
+}
+
