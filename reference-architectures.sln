@@ -29,6 +29,8 @@ Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "guidance-identity-adfs", "i
 EndProject
 Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "guidance-ra-identity-adds", "identity\adds-extend-domain\guidance-ra-identity-adds.deployproj", "{6830B0FF-579F-401B-BD53-7444230653F7}"
 EndProject
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "guidance-compute-sharepoint-2016", "virtual-machines\sharepoint-2016\guidance-compute-sharepoint-2016.deployproj", "{017F64A4-5DFA-4C14-A919-E2F9F7DA928F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{6830B0FF-579F-401B-BD53-7444230653F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6830B0FF-579F-401B-BD53-7444230653F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6830B0FF-579F-401B-BD53-7444230653F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{017F64A4-5DFA-4C14-A919-E2F9F7DA928F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{017F64A4-5DFA-4C14-A919-E2F9F7DA928F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{017F64A4-5DFA-4C14-A919-E2F9F7DA928F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{017F64A4-5DFA-4C14-A919-E2F9F7DA928F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
