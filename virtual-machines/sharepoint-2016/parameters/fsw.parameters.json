@@ -27,9 +27,9 @@
           }
         ],
         "imageReference": {
-          "publisher": "MicrosoftWindowsServer",
-          "offer": "WindowsServer",
-          "sku": "2012-R2-Datacenter",
+          "publisher": "MicrosoftSharePoint",
+          "offer": "MicrosoftSharePointServer",
+          "sku": "2016",
           "version": "latest"
         },
         "dataDisks": {
