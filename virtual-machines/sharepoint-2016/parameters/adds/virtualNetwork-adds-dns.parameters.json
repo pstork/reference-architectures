@@ -10,11 +10,11 @@
         ],
         "subnets": [
           {
-            "name": "web",
+            "name": "frontend",
             "addressPrefix": "10.0.1.0/24"
           },
           {
-            "name": "biz",
+            "name": "backend",
             "addressPrefix": "10.0.2.0/24"
           },
           {

@@ -12,7 +12,7 @@
             "domainNameLabel": "",
             "internalLoadBalancerSettings": {
               "privateIPAddress": "10.0.2.100",
-              "subnetName": "biz"
+              "subnetName": "backend"
             }
           }
         ],
@@ -59,7 +59,7 @@
           {
             "isPublic": "false",
             "isPrimary": "true",
-            "subnetName": "biz",
+            "subnetName": "backend",
             "privateIPAllocationMethod": "dynamic",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",

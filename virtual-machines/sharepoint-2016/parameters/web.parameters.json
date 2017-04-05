@@ -56,7 +56,7 @@
           {
             "isPublic": "false",
             "isPrimary": "true",
-            "subnetName": "web",
+            "subnetName": "frontend",
             "privateIPAllocationMethod": "dynamic",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
@@ -98,19 +98,6 @@
             "protectedSettingsConfig": {
               "Password": "AweS0me@PW"
             }
-          },
-          {
-            "name": "iis-config-ext",
-            "settingsConfigMapperUri": "https://raw.githubusercontent.com/mspnp/template-building-blocks/v1.0.0/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
-            "publisher": "Microsoft.Powershell",
-            "type": "DSC",
-            "typeHandlerVersion": "2.20",
-            "autoUpgradeMinorVersion": true,
-            "settingsConfig": {
-              "modulesUrl": "https://raw.githubusercontent.com/mspnp/reference-architectures/master/virtual-machines/n-tier-windows/extensions/iisaspnet.ps1.zip",
-              "configurationFunction": "iisaspnet.ps1\\iisaspnet"
-            },
-            "protectedSettingsConfig": { }
           }
         ],
         "availabilitySet": {

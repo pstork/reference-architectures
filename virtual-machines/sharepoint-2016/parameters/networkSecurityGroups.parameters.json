@@ -68,7 +68,7 @@
         {
           "name": "ra-ntier-sql-svca-nsg",
           "subnets": [
-            "biz"
+            "backend"
           ],
           "networkInterfaces": [
           ],
@@ -113,7 +113,7 @@
         {
           "name": "ra-ntier-sql-svcb-nsg",
           "subnets": [
-            "web"
+            "frontend"
           ],
           "networkInterfaces": [
           ],
