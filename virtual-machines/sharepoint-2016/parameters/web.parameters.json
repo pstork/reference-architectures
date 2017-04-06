@@ -4,10 +4,10 @@
   "parameters": {
     "loadBalancerSettings": {
       "value": {
-        "name": "web-lb",
+        "name": "wfe-lb",
         "frontendIPConfigurations": [
           {
-            "name": "web-lb-fe-config1",
+            "name": "wfe-lb-fe-config1",
             "loadBalancerType": "public",
             "domainNameLabel": "",
             "internalLoadBalancerSettings": { }
@@ -20,7 +20,7 @@
             "backendPort": 80,
             "protocol": "Tcp",
             "backendPoolName": "lb-bep1",
-            "frontendIPConfigurationName": "web-lb-fe-config1",
+            "frontendIPConfigurationName": "wfe-lb-fe-config1",
             "enableFloatingIP": false,
             "probeName": "lbp1"
           }
@@ -44,9 +44,9 @@
     },
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "web",
-        "computerNamePrefix": "web",
-        "size": "Standard_DS1_v2",
+        "namePrefix": "wfe",
+        "computerNamePrefix": "wfe",
+        "size": "Standard_DS3_v2",
         "adminUsername": "testuser",
         "adminPassword": "AweS0me@PW",
         "osType": "windows",
@@ -102,7 +102,7 @@
         ],
         "availabilitySet": {
           "useExistingAvailabilitySet": "No",
-          "name": "web-as"
+          "name": "wfe-as"
         }
       }
     },

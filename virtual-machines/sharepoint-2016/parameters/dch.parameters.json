@@ -11,8 +11,8 @@
             "loadBalancerType": "internal",
             "domainNameLabel": "",
             "internalLoadBalancerSettings": {
-              "privateIPAddress": "10.0.2.100",
-              "subnetName": "backend"
+              "privateIPAddress": "10.0.1.101",
+              "subnetName": "frontend"
             }
           }
         ],
@@ -59,7 +59,7 @@
           {
             "isPublic": "false",
             "isPrimary": "true",
-            "subnetName": "backend",
+            "subnetName": "frontend",
             "privateIPAllocationMethod": "dynamic",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",

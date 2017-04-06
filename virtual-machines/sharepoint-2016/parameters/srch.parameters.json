@@ -4,14 +4,14 @@
   "parameters": {
     "loadBalancerSettings": {
       "value": {
-        "name": "app-lb",
+        "name": "srch-lb",
         "frontendIPConfigurations": [
           {
-            "name": "app-lb-fe-config1",
+            "name": "srch-lb-fe-config1",
             "loadBalancerType": "internal",
             "domainNameLabel": "",
             "internalLoadBalancerSettings": {
-              "privateIPAddress": "10.0.2.100",
+              "privateIPAddress": "10.0.2.101",
               "subnetName": "backend"
             }
           }
@@ -23,7 +23,7 @@
             "backendPort": 80,
             "protocol": "Tcp",
             "backendPoolName": "lb-bep1",
-            "frontendIPConfigurationName": "app-lb-fe-config1",
+            "frontendIPConfigurationName": "srch-lb-fe-config1",
             "enableFloatingIP": false,
             "probeName": "lbp1"
           }
@@ -47,8 +47,8 @@
     },
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "app",
-        "computerNamePrefix": "app",
+        "namePrefix": "srch",
+        "computerNamePrefix": "srch",
         "size": "Standard_DS3_v2",
         "adminUsername": "testuser",
         "adminPassword": "AweS0me@PW",
