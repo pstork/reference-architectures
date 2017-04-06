@@ -28,7 +28,8 @@
       "parameter": {
         "biz": "[concat(parameters('parameterRootUri'), 'biz.parameters.json')]",
         "web": "[concat(parameters('parameterRootUri'), 'web.parameters.json')]",
-        "managementTier": "[concat(parameters('parameterRootUri'), 'virtualMachines-mgmt.parameters.json')]"
+        "dch": "[concat(parameters('parameterRootUri'), 'dch.parameters.json')]",
+        "srch": "[concat(parameters('parameterRootUri'), 'srch.parameters.json')]"
       }
     }
   },
@@ -59,6 +60,36 @@
         },
         "parametersLink": {
           "uri": "[variables('templates').parameter.web]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-ntier-sql-dch-deployment",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.virtualMachine]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.dch]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-ntier-sql-srch-deployment",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.virtualMachine]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.srch]",
           "contentVersion": "1.0.0.0"
         }
       }
