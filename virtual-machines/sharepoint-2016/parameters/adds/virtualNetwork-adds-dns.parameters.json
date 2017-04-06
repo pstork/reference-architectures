@@ -4,7 +4,7 @@
   "parameters": {
     "virtualNetworkSettings": {
       "value": {
-        "name": "ra-ntier-sql-vnet",
+        "name": "ra-sp2016-vnet",
         "addressPrefixes": [
           "10.0.0.0/16"
         ],

@@ -5,7 +5,7 @@
     "virtualMachinesExtensionSettings": {
       "value": [
         {
-          "vms": [ "ra-ntier-sql-ad-vm2" ],
+          "vms": [ "ra-sp2016-ad2" ],
           "extensions": [
             {
               "name": "join-ad-domain",

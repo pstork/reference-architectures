@@ -4,10 +4,10 @@
   "parameters": {
     "loadBalancerSettings": {
       "value": {
-        "name": "ra-ntier-sql-lb",
+        "name": "ra-sp2016-sql-lb",
         "frontendIPConfigurations": [
           {
-            "name": "ra-ntier-sql-lbfe1",
+            "name": "ra-sp2016-sql-lbfe1",
             "loadBalancerType": "internal",
             "domainNameLabel": "",
             "internalLoadBalancerSettings": {
@@ -22,15 +22,15 @@
             "frontendPort": 1433,
             "backendPort": 1433,
             "protocol": "Tcp",
-            "backendPoolName": "ra-ntier-sql-lb-bep1",
-            "frontendIPConfigurationName": "ra-ntier-sql-lbfe1",
+            "backendPoolName": "ra-sp2016-sql-lb-bep1",
+            "frontendIPConfigurationName": "ra-sp2016-sql-lbfe1",
             "enableFloatingIP": true,
-            "probeName": "ra-ntier-sql-lbp1"
+            "probeName": "ra-sp2016-sql-lbp1"
           }
         ],
         "probes": [
           {
-            "name": "ra-ntier-sql-lbp1",
+            "name": "ra-sp2016-sql-lbp1",
             "port": 59999,
             "protocol": "Tcp",
             "requestPath": null
@@ -38,7 +38,7 @@
         ],
         "backendPools": [
           {
-            "name": "ra-ntier-sql-lb-bep1",
+            "name": "ra-sp2016-sql-lb-bep1",
             "nicIndex": 0
           }
         ],
@@ -47,7 +47,7 @@
     },
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "ra-ntier-sql",
+        "namePrefix": "ra-sp2016-sql",
         "computerNamePrefix": "sql",
         "size": "Standard_DS1_v2",
         "osType": "windows",
@@ -114,8 +114,8 @@
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "ra-ntier-sql-vnet",
-        "resourceGroup": "ra-ntier-sql-network-rg"
+        "name": "ra-sp2016-vnet",
+        "resourceGroup": "ra-sp2016-network-rg"
       }
     },
     "buildingBlockSettings": {

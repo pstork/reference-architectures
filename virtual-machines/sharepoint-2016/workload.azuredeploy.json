@@ -37,7 +37,7 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-ntier-sql-biz-deployment",
+      "name": "ra-sp2016-biz-deployment",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -52,7 +52,7 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-ntier-sql-web-deployment",
+      "name": "ra-sp2016-web-deployment",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -67,7 +67,7 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-ntier-sql-dch-deployment",
+      "name": "ra-sp2016-dch-deployment",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -82,7 +82,7 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-ntier-sql-srch-deployment",
+      "name": "ra-sp2016-srch-deployment",
       "properties": {
         "mode": "Incremental",
         "templateLink": {

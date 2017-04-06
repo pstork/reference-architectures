@@ -4,10 +4,10 @@
   "parameters": {
     "loadBalancerSettings": {
       "value": {
-        "name": "wfe-lb",
+        "name": "ra-sp2016-wfe-lb",
         "frontendIPConfigurations": [
           {
-            "name": "wfe-lb-fe-config1",
+            "name": "ra-sp2016-wfe-lbfe1",
             "loadBalancerType": "public",
             "domainNameLabel": "",
             "internalLoadBalancerSettings": { }
@@ -19,15 +19,15 @@
             "frontendPort": 80,
             "backendPort": 80,
             "protocol": "Tcp",
-            "backendPoolName": "lb-bep1",
-            "frontendIPConfigurationName": "wfe-lb-fe-config1",
+            "backendPoolName": "ra-sp2016-wfe-lb-bep1",
+            "frontendIPConfigurationName": "ra-sp2016-wfe-lbfe1",
             "enableFloatingIP": false,
-            "probeName": "lbp1"
+            "probeName": "ra-sp2016-wfe-lbp1"
           }
         ],
         "probes": [
           {
-            "name": "lbp1",
+            "name": "ra-sp2016-wfe-lbp1",
             "port": 80,
             "protocol": "Http",
             "requestPath": "/"
@@ -35,7 +35,7 @@
         ],
         "backendPools": [
           {
-            "name": "lb-bep1",
+            "name": "ra-sp2016-wfe-lb-bep1",
             "nicIndex": 0
           }
         ],
@@ -44,7 +44,7 @@
     },
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "wfe",
+        "namePrefix": "ra-sp2016-wfe",
         "computerNamePrefix": "wfe",
         "size": "Standard_DS3_v2",
         "adminUsername": "testuser",
@@ -108,8 +108,8 @@
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "ra-ntier-sql-vnet",
-        "resourceGroup": "ra-ntier-sql-network-rg"
+        "name": "ra-sp2016-vnet",
+        "resourceGroup": "ra-sp2016-network-rg"
       }
     },
     "buildingBlockSettings": {

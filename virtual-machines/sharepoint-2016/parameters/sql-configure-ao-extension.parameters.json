@@ -5,7 +5,7 @@
     "virtualMachinesExtensionSettings": {
       "value": [
         {
-          "vms": [ "ra-ntier-sql-vm2" ],
+          "vms": [ "ra-sp2016-sql2" ],
           "extensions": [
             {
               "name": "configuringAlwaysOn",
@@ -19,18 +19,18 @@
                 "configurationFunction": "CreateFailoverCluster.ps1\\CreateFailoverCluster",
                 "properties": {
                   "domainName": "contoso.com",
-                  "clusterName": "ra-ntier-sql-fc",
+                  "clusterName": "ra-sp2016-sql-fc",
                   "sharePath": "\\\\fsw1\\sql-fs",
                   "nodes": [
                     "sql1",
                     "sql2"
                   ],
-                  "sqlAlwaysOnEndpointName": "ra-ntier-sql-hadr",
+                  "sqlAlwaysOnEndpointName": "ra-sp2016-sql-hadr",
                   "sqlAlwaysOnAvailabilityGroupName": "alwayson-ag",
                   "sqlAlwaysOnAvailabilityGroupListenerName": "alwayson-ag-listener",
                   "SqlAlwaysOnAvailabilityGroupListenerPort": "1433",
                   "databaseNames": "AutoHa-sample",
-                  "lbName": "ra-ntier-sql-lb",
+                  "lbName": "ra-sp2016-sql-lb",
                   "lbAddress": "10.0.3.100",
                   "primaryReplica": "sql2",
                   "secondaryReplica": "sql1",

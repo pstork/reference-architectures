@@ -4,7 +4,7 @@
   "parameters": {
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "ra-ntier-sql-app",
+        "namePrefix": "ra-sp2016-app",
         "computerNamePrefix": "app",
         "size": "Standard_DS3_v2",
         "adminUsername": "testuser",
@@ -68,8 +68,8 @@
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "ra-ntier-sql-vnet",
-        "resourceGroup": "ra-ntier-sql-network-rg"
+        "name": "ra-sp2016-vnet",
+        "resourceGroup": "ra-sp2016-network-rg"
       }
     },
     "buildingBlockSettings": {

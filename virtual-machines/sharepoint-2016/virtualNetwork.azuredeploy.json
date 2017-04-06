@@ -43,7 +43,7 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-ntier-sql-vnet-deployment",
+      "name": "ra-sp2016-vnet-deployment",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -58,9 +58,9 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-ntier-sql-mgmt-deployment",
+      "name": "ra-sp2016-mgmt-deployment",
       "dependsOn": [
-        "ra-ntier-sql-vnet-deployment"
+        "ra-sp2016-vnet-deployment"
       ],
       "properties": {
         "mode": "Incremental",
@@ -76,9 +76,9 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-ntier-sql-ad-deployment",
+      "name": "ra-sp2016-ad-deployment",
       "dependsOn": [
-        "ra-ntier-sql-vnet-deployment"
+        "ra-sp2016-vnet-deployment"
       ],
       "properties": {
         "mode": "Incremental",
@@ -94,9 +94,9 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-ntier-sql-update-dns",
+      "name": "ra-sp2016-update-dns",
       "dependsOn": [
-        "ra-ntier-sql-ad-deployment"
+        "ra-sp2016-ad-deployment"
       ],
       "properties": {
         "mode": "Incremental",
@@ -112,9 +112,9 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-ntier-sql-primary-ad-ext",
+      "name": "ra-sp2016-primary-ad-ext",
       "dependsOn": [
-        "ra-ntier-sql-update-dns"
+        "ra-sp2016-update-dns"
       ],
       "properties": {
         "mode": "Incremental",
@@ -130,9 +130,9 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-ntier-sql-secondary-ad-ext",
+      "name": "ra-sp2016-secondary-ad-ext",
       "dependsOn": [
-        "ra-ntier-sql-primary-ad-ext"
+        "ra-sp2016-primary-ad-ext"
       ],
       "properties": {
         "mode": "Incremental",
@@ -148,9 +148,9 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-ntier-sql-servers",
+      "name": "ra-sp2016-servers",
       "dependsOn": [
-        "ra-ntier-sql-secondary-ad-ext"
+        "ra-sp2016-secondary-ad-ext"
       ],
       "properties": {
         "mode": "Incremental",
@@ -166,9 +166,9 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-ntier-sql-fsw",
+      "name": "ra-sp2016-fsw",
       "dependsOn": [
-        "ra-ntier-sql-secondary-ad-ext"
+        "ra-sp2016-secondary-ad-ext"
       ],
       "properties": {
         "mode": "Incremental",
@@ -184,10 +184,10 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-ntier-sql-ao-iaas-ext",
+      "name": "ra-sp2016-ao-iaas-ext",
       "dependsOn": [
-        "ra-ntier-sql-servers",
-        "ra-ntier-sql-fsw"
+        "ra-sp2016-servers",
+        "ra-sp2016-fsw"
       ],
       "properties": {
         "mode": "Incremental",
@@ -203,9 +203,9 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-ntier-sql-configure-ao-ext",
+      "name": "ra-sp2016-configure-ao-ext",
       "dependsOn": [
-        "ra-ntier-sql-ao-iaas-ext"
+        "ra-sp2016-ao-iaas-ext"
       ],
       "properties": {
         "mode": "Incremental",

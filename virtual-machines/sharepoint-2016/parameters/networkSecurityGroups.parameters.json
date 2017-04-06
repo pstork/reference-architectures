@@ -4,14 +4,14 @@
   "parameters": {
     "virtualNetworkSettings": {
       "value": {
-        "name": "ra-ntier-sql-vnet",
-        "resourceGroup": "ra-ntier-sql-network-rg"
+        "name": "ra-sp2016-vnet",
+        "resourceGroup": "ra-sp2016-network-rg"
       }
     },
     "networkSecurityGroupsSettings": {
       "value": [
         {
-          "name": "ra-ntier-sql-ad-nsg",
+          "name": "ra-sp2016-ad-nsg",
           "subnets": [
             "ad"
           ],
@@ -21,7 +21,7 @@
           ]
         },
         {
-          "name": "ra-ntier-sql-nsg",
+          "name": "ra-sp2016-nsg",
           "subnets": [
             "sql"
           ],
@@ -66,7 +66,7 @@
           ]
         },
         {
-          "name": "ra-ntier-sql-svca-nsg",
+          "name": "ra-sp2016-svca-nsg",
           "subnets": [
             "backend"
           ],
@@ -111,7 +111,7 @@
           ]
         },
         {
-          "name": "ra-ntier-sql-svcb-nsg",
+          "name": "ra-sp2016-svcb-nsg",
           "subnets": [
             "frontend"
           ],
@@ -168,10 +168,10 @@
           ]
         },
         {
-          "name": "ra-ntier-sql-mgmt-nsg",
+          "name": "ra-sp2016-mgmt-nsg",
           "subnets": [ ],
           "networkInterfaces": [
-            "ra-ntier-sql-jb-vm1-nic1"
+            "ra-sp2016-jb-vm1-nic1"
           ],
           "securityRules": [
             {

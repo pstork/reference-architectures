@@ -4,7 +4,7 @@
   "parameters": {
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "ra-ntier-sql-fsw",
+        "namePrefix": "ra-sp2016-fsw",
         "computerNamePrefix": "fsw",
         "size": "Standard_DS1_v2",
         "osType": "windows",
@@ -97,8 +97,8 @@
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "ra-ntier-sql-vnet",
-        "resourceGroup": "ra-ntier-sql-network-rg"
+        "name": "ra-sp2016-vnet",
+        "resourceGroup": "ra-sp2016-network-rg"
       }
     },
     "buildingBlockSettings": {
