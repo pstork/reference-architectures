@@ -1,0 +1,49 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualMachinesExtensionSettings": {
+      "value": [
+        {
+          "vms": [ "ra-sp2016-app-vm1" ],
+          "extensions": [
+            {
+              "name": "createSPfarm",
+              "publisher": "Microsoft.Powershell",
+              "type": "DSC",
+              "typeHandlerVersion": "2.19",
+              "autoUpgradeMinorVersion": false,
+       ?       "settingsConfigMapperUri": "https://raw.githubusercontent.com/pstork/template-building-blocks/pstork/SharePoint2016/templates/resources/Microsoft.Compute/virtualMachines/virtualMachine-configuration-settings-windows.json",
+              "settingsConfig": {
+                "modulesURL": "https://raw.githubusercontent.com/pstork/template-building-blocks/master/scripts/create-join-farm.ps1.zip",
+                "configurationFunction": "create-join-farm.ps1\\CreateJoinFarm",
+                "properties": {
+                  "domainName": "contoso.com",
+                  "sqlAlwaysOnEndpointName": "ra-sp2016-sql-hadr",
+                  "adminCreds": {
+                    "userName": "testuser",
+                    "password": "privateSettingsRef:AdminPassword"
+                  },
+                  "sqlServiceCreds": {
+                    "userName": "sqlservicetestuser",
+                    "password": "privateSettingsRef:SqlServerServiceAccountPassword"
+                  },
+                  "NumberOfDisks": "2",
+                  "WorkloadType": "GENERAL"
+                }
+              },
+              "protectedSettingsConfig": {
+                "items": {
+                  "adminPassword": "AweS0me@PW",
+                  "sqlServerServiceAccountPassword": "AweS0me@SQLServicePW"
+                }
+              }
+
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+

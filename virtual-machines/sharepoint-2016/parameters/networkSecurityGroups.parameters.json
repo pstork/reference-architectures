@@ -21,7 +21,7 @@
           ]
         },
         {
-          "name": "ra-sp2016-nsg",
+          "name": "ra-sp2016-sql-nsg",
           "subnets": [
             "sql"
           ],

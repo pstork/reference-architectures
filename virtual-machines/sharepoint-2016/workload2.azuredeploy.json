@@ -22,7 +22,7 @@
   "variables": {
     "templates": {
       "deployment": {
-        "extensions": "[concat(parameters('templateRootUri'), 'templates/buildingBlocks/sharepoint-2016-extensions')]"
+        "extensions": "[concat(parameters('templateRootUri'), 'templates/buildingBlocks/sharepoint-2016-extensions/azuredeploy.json')]"
       },
       "parameter": {
         "createFarmExtensions": "[concat(parameters('parameterRootUri'), 'spt-create-farm-extensions.parameters.json')]",
