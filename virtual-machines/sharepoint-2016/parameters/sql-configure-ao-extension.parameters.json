@@ -19,7 +19,7 @@
                 "configurationFunction": "CreateFailoverCluster.ps1\\CreateFailoverCluster",
                 "properties": {
                   "domainName": "contoso.com",
-                  "clusterName": "ra-sp16-sql-fc",
+                  "clusterName": "ra-ntier-sql-fc",
                   "sharePath": "\\\\fsw1\\sql-fs",
                   "nodes": [
                     "sql1",
