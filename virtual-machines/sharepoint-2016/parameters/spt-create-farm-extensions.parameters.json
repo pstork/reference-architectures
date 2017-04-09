@@ -5,7 +5,7 @@
     "virtualMachinesExtensionSettings": {
       "value": [
         {
-          "vms": [ "app1" ],
+          "vms": [ "ra-sp2016-app-vm1" ],
           "extensions": [
             {
               "name": "createSPfarm",
@@ -33,7 +33,7 @@
                     "password": "privateSettingsRef:SPSetupAccountPassword"
                   },
                   "ServerRole": "Application",
-				  "CreateFarm": true
+				  "CreateFarm": "True"
                 }
               },
               "protectedSettingsConfig": {
