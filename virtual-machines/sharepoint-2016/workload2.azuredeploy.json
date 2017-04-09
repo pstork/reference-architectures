@@ -25,8 +25,7 @@
         "extensions": "[concat(parameters('templateRootUri'), 'templates/buildingBlocks/sharepoint-2016-extensions/azuredeploy.json')]"
       },
       "parameter": {
-        "createFarmExtensions": "[concat(parameters('parameterRootUri'), 'spt-create-farm-extensions.parameters.json')]",
-        "configFarmExtensions": "[concat(parameters('parameterRootUri'), 'spt-config-farm-extensions.parameters.json')]"
+        "createFarmExtensions": "[concat(parameters('parameterRootUri'), 'spt-create-farm-extensions.parameters.json')]"
       }
     }
   },
@@ -42,24 +41,6 @@
         },
         "parametersLink": {
           "uri": "[variables('templates').parameter.createFarmExtensions]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-config-farm-ext",
-      "dependsOn": [
-        "ra-sp2016-create-farm-ext"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('templates').deployment.extensions]"
-        },
-        "parametersLink": {
-          "uri": "[variables('templates').parameter.configFarmExtensions]",
           "contentVersion": "1.0.0.0"
         }
       }
