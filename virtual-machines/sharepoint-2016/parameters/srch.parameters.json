@@ -62,7 +62,7 @@
         ],
         "availabilitySet": {
           "useExistingAvailabilitySet": "No",
-          "name": "app-as"
+          "name": "srch-as"
         }
       }
     },
