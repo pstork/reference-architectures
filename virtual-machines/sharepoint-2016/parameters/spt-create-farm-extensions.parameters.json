@@ -13,7 +13,7 @@
               "type": "DSC",
               "typeHandlerVersion": "2.19",
               "autoUpgradeMinorVersion": false,
-              "settingsConfigMapperUri": "https://raw.githubusercontent.com/mspnp/template-building-blocks/v1.0.0/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+              "settingsConfigMapperUri": "https://raw.githubusercontent.com/pstork/template-building-blocks/pstork/SharePoint2016/templates/resources/SharePoint2016/SP2016-configuration-settings-mapper.json",
               "settingsConfig": {
                 "modulesURL": "https://github.com/pstork/reference-architectures/raw/pstork/SharePoint2016/virtual-machines/sharepoint-2016/extensions/Create-Join-Farm.ps1.zip",
                 "configurationFunction": "create-join-farm.ps1\\CreateJoinFarm",

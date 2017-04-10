@@ -4,7 +4,7 @@
   "parameters": {
     "templateRootUri": {
       "type": "string",
-      "defaultValue": "https://raw.githubusercontent.com/pstork/template-building-blocks/master/",
+      "defaultValue": "https://raw.githubusercontent.com/pstork/template-building-blocks/pstork/SharePoint2016/",
       "metadata": {
         "description": "Root path for templates"
       }
@@ -32,7 +32,22 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-create-farm-ext",
+      "name": "ra-sp2016-app1-farm-ext",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.extensions]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.createFarmExtensions]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+	{
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-app2-farm-ext",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
