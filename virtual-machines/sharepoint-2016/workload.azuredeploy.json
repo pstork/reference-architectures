@@ -29,7 +29,7 @@
         "web": "[concat(parameters('parameterRootUri'), 'web.parameters.json')]",
         "dch": "[concat(parameters('parameterRootUri'), 'dch.parameters.json')]",
         "srch": "[concat(parameters('parameterRootUri'), 'srch.parameters.json')]",
-        "sptIaaSExtensions": "[concat(parameters('parameterRootUri'), 'spt-iaas-extension.parameters.parameters.json')]"
+        "sptIaaSExtensions": "[concat(parameters('parameterRootUri'), 'spt-iaas-extension.parameters.json')]"
       }
     }
   },
