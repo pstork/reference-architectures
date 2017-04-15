@@ -43,22 +43,5 @@
         }
       }
     }
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-config-servers-ext",
-      "dependsOn": [
-        "ra-sp2016-config-farm-ext"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('templates').deployment.extensions]"
-        },
-        "parametersLink": {
-          "uri": "[variables('templates').parameter.configServerExtensions]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    }
   ]
 }
