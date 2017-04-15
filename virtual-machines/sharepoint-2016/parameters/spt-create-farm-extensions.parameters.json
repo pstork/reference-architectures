@@ -24,7 +24,7 @@
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
-                  },				  
+                  },
                   "FarmAccount": {
                     "userName": "sp_farm",
                     "password": "privateSettingsRef:FarmPassword"
@@ -37,7 +37,7 @@
               },
               "protectedSettingsConfig": {
                 "items": {
-				  "PassPhrasePassword": "AweS0me@PW",
+                  "PassPhrasePassword": "AweS0me@PW",
                   "FarmPassword": "AweS0me@PW",
                   "SPSetupAccountPassword": "AweS0me@PW"
                 }
@@ -50,4 +50,3 @@
     }
   }
 }
-

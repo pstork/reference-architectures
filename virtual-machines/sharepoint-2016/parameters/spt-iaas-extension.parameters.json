@@ -1,0 +1,208 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualMachinesExtensionSettings": {
+      "value": [
+        {
+          "vms": [ "ra-sp2016-app-vm1" ],
+          "extensions": [
+            {
+              "name": "sptDiskPrepare",
+              "publisher": "Microsoft.Powershell",
+              "type": "DSC",
+              "typeHandlerVersion": "2.19",
+              "autoUpgradeMinorVersion": false,
+              "settingsConfigMapperUri": "https://raw.githubusercontent.com/pstork/template-building-blocks/pstork/SharePoint2016/templates/resources/SharePoint2016/SP2016-configuration-settings-mapper.json",
+              "settingsConfig": {
+                "modulesURL": "https://github.com/pstork/template-building-blocks/raw/pstork/SharePoint2016/scripts/add-datadriveF.ps1.zip",
+                "configurationFunction": "add-datadriveF.ps1\\BuildSPTServers",
+                "properties": {
+                  "driveletter": "F"
+                }
+              },
+              "protectedSettingsConfig": {
+                "items": {
+                }
+              }
+
+            }
+          ]
+        },
+        {
+          "vms": [ "ra-sp2016-app-vm2" ],
+          "extensions": [
+            {
+              "name": "sptDiskPrepare",
+              "publisher": "Microsoft.Powershell",
+              "type": "DSC",
+              "typeHandlerVersion": "2.19",
+              "autoUpgradeMinorVersion": false,
+              "settingsConfigMapperUri": "https://raw.githubusercontent.com/pstork/template-building-blocks/pstork/SharePoint2016/templates/resources/SharePoint2016/SP2016-configuration-settings-mapper.json",
+              "settingsConfig": {
+                "modulesURL": "https://github.com/pstork/template-building-blocks/raw/pstork/SharePoint2016/scripts/add-datadriveF.ps1.zip",
+                "configurationFunction": "add-datadriveF.ps1\\BuildSPTServers",
+                "properties": {
+                  "driveletter": "F"
+                }
+              },
+              "protectedSettingsConfig": {
+                "items": {
+                }
+              }
+            }
+          ]
+        },
+        {
+          "vms": [ "ra-sp2016-wfe-vm1" ],
+          "extensions": [
+            {
+              "name": "sptDiskPrepare",
+              "publisher": "Microsoft.Powershell",
+              "type": "DSC",
+              "typeHandlerVersion": "2.19",
+              "autoUpgradeMinorVersion": false,
+              "settingsConfigMapperUri": "https://raw.githubusercontent.com/pstork/template-building-blocks/pstork/SharePoint2016/templates/resources/SharePoint2016/SP2016-configuration-settings-mapper.json",
+              "settingsConfig": {
+                "modulesURL": "https://github.com/pstork/template-building-blocks/raw/pstork/SharePoint2016/scripts/add-datadriveF.ps1.zip",
+                "configurationFunction": "add-datadriveF.ps1\\BuildSPTServers",
+                "properties": {
+                  "driveletter": "F"
+                }
+              },
+              "protectedSettingsConfig": {
+                "items": {
+                }
+              }
+
+            }
+          ]
+        },
+        {
+          "vms": [ "ra-sp2016-wfe-vm2" ],
+          "extensions": [
+            {
+              "name": "sptDiskPrepare",
+              "publisher": "Microsoft.Powershell",
+              "type": "DSC",
+              "typeHandlerVersion": "2.19",
+              "autoUpgradeMinorVersion": false,
+              "settingsConfigMapperUri": "https://raw.githubusercontent.com/pstork/template-building-blocks/pstork/SharePoint2016/templates/resources/SharePoint2016/SP2016-configuration-settings-mapper.json",
+              "settingsConfig": {
+                "modulesURL": "https://github.com/pstork/template-building-blocks/raw/pstork/SharePoint2016/scripts/add-datadriveF.ps1.zip",
+                "configurationFunction": "add-datadriveF.ps1\\BuildSPTServers",
+                "properties": {
+                  "driveletter": "F"
+                }
+              },
+              "protectedSettingsConfig": {
+                "items": {
+                }
+              }
+            }
+          ]
+        },
+        {
+          "vms": [ "ra-sp2016-dch-vm1" ],
+          "extensions": [
+            {
+              "name": "sptDiskPrepare",
+              "publisher": "Microsoft.Powershell",
+              "type": "DSC",
+              "typeHandlerVersion": "2.19",
+              "autoUpgradeMinorVersion": false,
+              "settingsConfigMapperUri": "https://raw.githubusercontent.com/pstork/template-building-blocks/pstork/SharePoint2016/templates/resources/SharePoint2016/SP2016-configuration-settings-mapper.json",
+              "settingsConfig": {
+                "modulesURL": "https://github.com/pstork/template-building-blocks/raw/pstork/SharePoint2016/scripts/add-datadriveF.ps1.zip",
+                "configurationFunction": "add-datadriveF.ps1\\BuildSPTServers",
+                "properties": {
+                  "driveletter": "F"
+                }
+              },
+              "protectedSettingsConfig": {
+                "items": {
+                }
+              }
+
+            }
+          ]
+        },
+        {
+          "vms": [ "ra-sp2016-dch-vm2" ],
+          "extensions": [
+            {
+              "name": "sptDiskPrepare",
+              "publisher": "Microsoft.Powershell",
+              "type": "DSC",
+              "typeHandlerVersion": "2.19",
+              "autoUpgradeMinorVersion": false,
+              "settingsConfigMapperUri": "https://raw.githubusercontent.com/pstork/template-building-blocks/pstork/SharePoint2016/templates/resources/SharePoint2016/SP2016-configuration-settings-mapper.json",
+              "settingsConfig": {
+                "modulesURL": "https://github.com/pstork/template-building-blocks/raw/pstork/SharePoint2016/scripts/add-datadriveF.ps1.zip",
+                "configurationFunction": "add-datadriveF.ps1\\BuildSPTServers",
+                "properties": {
+                  "driveletter": "F"
+                }
+              },
+              "protectedSettingsConfig": {
+                "items": {
+                }
+              }
+            }
+          ]
+        },
+        {
+          "vms": [ "ra-sp2016-srch-vm1" ],
+          "extensions": [
+            {
+              "name": "sptDiskPrepare",
+              "publisher": "Microsoft.Powershell",
+              "type": "DSC",
+              "typeHandlerVersion": "2.19",
+              "autoUpgradeMinorVersion": false,
+              "settingsConfigMapperUri": "https://raw.githubusercontent.com/pstork/template-building-blocks/pstork/SharePoint2016/templates/resources/SharePoint2016/SP2016-configuration-settings-mapper.json",
+              "settingsConfig": {
+                "modulesURL": "https://github.com/pstork/template-building-blocks/raw/pstork/SharePoint2016/scripts/add-datadriveF.ps1.zip",
+                "configurationFunction": "add-datadriveF.ps1\\BuildSPTServers",
+                "properties": {
+                  "driveletter": "F"
+                }
+              },
+              "protectedSettingsConfig": {
+                "items": {
+                }
+              }
+
+            }
+          ]
+        },
+        {
+          "vms": [ "ra-sp2016-srch-vm2" ],
+          "extensions": [
+            {
+              "name": "sptDiskPrepare",
+              "publisher": "Microsoft.Powershell",
+              "type": "DSC",
+              "typeHandlerVersion": "2.19",
+              "autoUpgradeMinorVersion": false,
+              "settingsConfigMapperUri": "https://raw.githubusercontent.com/pstork/template-building-blocks/pstork/SharePoint2016/templates/resources/SharePoint2016/SP2016-configuration-settings-mapper.json",
+              "settingsConfig": {
+                "modulesURL": "https://github.com/pstork/template-building-blocks/raw/pstork/SharePoint2016/scripts/add-datadriveF.ps1.zip",
+                "configurationFunction": "add-datadriveF.ps1\\BuildSPTServers",
+                "properties": {
+                  "driveletter": "F"
+                }
+              },
+              "protectedSettingsConfig": {
+                "items": {
+                }
+              }
+            }
+          ]
+        }
+
+      ]
+    }
+  }
+}
+

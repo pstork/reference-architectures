@@ -5,7 +5,6 @@
     "templateRootUri": {
       "type": "string",
       "defaultValue": "https://raw.githubusercontent.com/pstork/template-building-blocks/master/",
-//      "defaultValue": "https://raw.githubusercontent.com/mspnp/template-building-blocks/v1.0.0/",
       "metadata": {
         "description": "Root path for templates"
       }
@@ -13,7 +12,6 @@
     "parameterRootUri": {
       "type": "string",
       "defaultValue": "https://raw.githubusercontent.com/pstork/reference-architectures/pstork/SharePoint2016/virtual-machines/sharepoint-2016/parameters/",
-//      "defaultValue": "https://raw.githubusercontent.com/mspnp/reference-architectures/master/virtual-machines/n-tier-windows/parameters/",
       "metadata": {
         "decription": "Root path for parameters"
       }
@@ -23,13 +21,15 @@
     "templates": {
       "deployment": {
         "loadBalancer": "[concat(parameters('templateRootUri'), 'templates/buildingBlocks/loadBalancer-backend-n-vm/azuredeploy.json')]",
-        "virtualMachine": "[concat(parameters('templateRootUri'), 'templates/buildingBlocks/multi-vm-n-nic-m-storage/azuredeploy.json')]"
+        "virtualMachine": "[concat(parameters('templateRootUri'), 'templates/buildingBlocks/multi-vm-n-nic-m-storage/azuredeploy.json')]",
+        "extensions": "[concat(parameters('templateRootUri'), 'templates/buildingBlocks/virtualMachine-extensions/azuredeploy.json')]"
       },
       "parameter": {
         "biz": "[concat(parameters('parameterRootUri'), 'biz.parameters.json')]",
         "web": "[concat(parameters('parameterRootUri'), 'web.parameters.json')]",
         "dch": "[concat(parameters('parameterRootUri'), 'dch.parameters.json')]",
-        "srch": "[concat(parameters('parameterRootUri'), 'srch.parameters.json')]"
+        "srch": "[concat(parameters('parameterRootUri'), 'srch.parameters.json')]",
+        "sptIaaSExtensions": "[concat(parameters('parameterRootUri'), 'spt-iaas-extension.parameters.parameters.json')]"
       }
     }
   },
@@ -93,7 +93,25 @@
           "contentVersion": "1.0.0.0"
         }
       }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-ao-iaas-ext",
+      "dependsOn": [
+        "ra-sp2016-servers",
+        "ra-sp2016-fsw"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.extensions]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.sptIaaSExtensions]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
     }
   ]
 }
-
