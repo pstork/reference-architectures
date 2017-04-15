@@ -28,7 +28,8 @@
         "biz": "[concat(parameters('parameterRootUri'), 'biz.parameters.json')]",
         "web": "[concat(parameters('parameterRootUri'), 'web.parameters.json')]",
         "dch": "[concat(parameters('parameterRootUri'), 'dch.parameters.json')]",
-        "srch": "[concat(parameters('parameterRootUri'), 'srch.parameters.json')]"
+        "srch": "[concat(parameters('parameterRootUri'), 'srch.parameters.json')]",
+        "createFarmExtensions": "[concat(parameters('parameterRootUri'), 'spt-create-farm-extensions.parameters.json')]",
       }
     }
   },
@@ -92,6 +93,26 @@
           "contentVersion": "1.0.0.0"
         }
       }
-    }
-  ]
+    },
+   {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-create-farm-ext",
+      "dependsOn": [
+        "ra-sp2016-web-deployment",
+        "ra-sp2016-dch-deployment",
+        "ra-sp2016-srch-deployment",
+        "ra-sp2016-biz-deployment"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.extensions]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.createFarmExtensions]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    }  ]
 }
