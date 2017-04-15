@@ -28,8 +28,7 @@
         "biz": "[concat(parameters('parameterRootUri'), 'biz.parameters.json')]",
         "web": "[concat(parameters('parameterRootUri'), 'web.parameters.json')]",
         "dch": "[concat(parameters('parameterRootUri'), 'dch.parameters.json')]",
-        "srch": "[concat(parameters('parameterRootUri'), 'srch.parameters.json')]",
-        "sptIaaSExtensions": "[concat(parameters('parameterRootUri'), 'spt-iaas-extension.parameters.json')]"
+        "srch": "[concat(parameters('parameterRootUri'), 'srch.parameters.json')]"
       }
     }
   },
@@ -90,27 +89,6 @@
         },
         "parametersLink": {
           "uri": "[variables('templates').parameter.srch]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-ao-iaas-ext",
-      "dependsOn": [
-        "ra-sp2016-biz-deployment",
-        "ra-sp2016-web-deployment",
-        "ra-sp2016-dch-deployment",
-        "ra-sp2016-srch-deployment"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('templates').deployment.extensions]"
-        },
-        "parametersLink": {
-          "uri": "[variables('templates').parameter.sptIaaSExtensions]",
           "contentVersion": "1.0.0.0"
         }
       }
