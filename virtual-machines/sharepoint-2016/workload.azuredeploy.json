@@ -99,8 +99,10 @@
       "apiVersion": "2015-01-01",
       "name": "ra-sp2016-ao-iaas-ext",
       "dependsOn": [
-        "ra-sp2016-servers",
-        "ra-sp2016-fsw"
+        "ra-sp2016-biz-deployment",
+        "ra-sp2016-web-deployment",
+        "ra-sp2016-dch-deployment",
+        "ra-sp2016-srch-deployment"
       ],
       "properties": {
         "mode": "Incremental",
