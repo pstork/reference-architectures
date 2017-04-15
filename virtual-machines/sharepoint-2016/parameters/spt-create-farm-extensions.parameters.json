@@ -19,10 +19,10 @@
                 "configurationFunction": "create-join-farm.ps1\\CreateJoinFarm",
                 "properties": {
                   "domainName": "contoso",
-                  "$DomainFQDNName": "contoso.com",
+                  "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "Application",
-                  "$driveletter": "F",
+                  "driveletter": "F",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -72,10 +72,10 @@
                 "configurationFunction": "create-join-farm.ps1\\CreateJoinFarm",
                 "properties": {
                   "domainName": "contoso",
-                  "$DomainFQDNName": "contoso.com",
+                  "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "Application",
-                  "$driveletter": "F",
+                  "driveletter": "F",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -126,10 +126,10 @@
                 "configurationFunction": "create-join-farm.ps1\\CreateJoinFarm",
                 "properties": {
                   "domainName": "contoso",
-                  "$DomainFQDNName": "contoso.com",
+                  "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "WebFrontEnd",
-                  "$driveletter": "F",
+                  "driveletter": "F",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -180,10 +180,10 @@
                 "configurationFunction": "create-join-farm.ps1\\CreateJoinFarm",
                 "properties": {
                   "domainName": "contoso",
-                  "$DomainFQDNName": "contoso.com",
+                  "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "WebFrontEnd",
-                  "$driveletter": "F",
+                  "driveletter": "F",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -234,10 +234,10 @@
                 "configurationFunction": "create-join-farm.ps1\\CreateJoinFarm",
                 "properties": {
                   "domainName": "contoso",
-                  "$DomainFQDNName": "contoso.com",
+                  "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "DistributedCache",
-                  "$driveletter": "F",
+                  "driveletter": "F",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -288,10 +288,10 @@
                 "configurationFunction": "create-join-farm.ps1\\CreateJoinFarm",
                 "properties": {
                   "domainName": "contoso",
-                  "$DomainFQDNName": "contoso.com",
+                  "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "DistributedCache",
-                  "$driveletter": "F",
+                  "driveletter": "F",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -342,10 +342,10 @@
                 "configurationFunction": "create-join-farm.ps1\\CreateJoinFarm",
                 "properties": {
                   "domainName": "contoso",
-                  "$DomainFQDNName": "contoso.com",
+                  "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "Search",
-                  "$driveletter": "F",
+                  "driveletter": "F",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -396,10 +396,10 @@
                 "configurationFunction": "create-join-farm.ps1\\CreateJoinFarm",
                 "properties": {
                   "domainName": "contoso",
-                  "$DomainFQDNName": "contoso.com",
+                  "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "Search",
-                  "$driveletter": "F",
+                  "driveletter": "F",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
