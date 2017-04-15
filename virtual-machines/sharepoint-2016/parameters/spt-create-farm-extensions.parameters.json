@@ -23,6 +23,7 @@
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "Application",
                   "driveletter": "F",
+                  "CentralAdmin": "True",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -76,6 +77,7 @@
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "Application",
                   "driveletter": "F",
+                  "CentralAdmin": "True",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -130,6 +132,7 @@
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "WebFrontEnd",
                   "driveletter": "F",
+                  "CentralAdmin": "False",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -184,6 +187,7 @@
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "WebFrontEnd",
                   "driveletter": "F",
+                  "CentralAdmin": "False",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -238,6 +242,7 @@
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "DistributedCache",
                   "driveletter": "F",
+                  "CentralAdmin": "False",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -292,6 +297,7 @@
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "DistributedCache",
                   "driveletter": "F",
+                  "CentralAdmin": "False",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -346,6 +352,7 @@
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "Search",
                   "driveletter": "F",
+                  "CentralAdmin": "False",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -400,6 +407,7 @@
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "Search",
                   "driveletter": "F",
+                  "CentralAdmin": "False",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
