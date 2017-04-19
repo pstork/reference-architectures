@@ -25,11 +25,12 @@
         "extensions": "[concat(parameters('templateRootUri'), 'templates/buildingBlocks/virtualMachine-extensions/azuredeploy.json')]"
       },
       "parameter": {
-        "biz": "[concat(parameters('parameterRootUri'), 'biz.parameters.json')]",
+        "app": "[concat(parameters('parameterRootUri'), 'app.parameters.json')]",
         "web": "[concat(parameters('parameterRootUri'), 'web.parameters.json')]",
         "dch": "[concat(parameters('parameterRootUri'), 'dch.parameters.json')]",
         "srch": "[concat(parameters('parameterRootUri'), 'srch.parameters.json')]",
         "createFarmExtensions": "[concat(parameters('parameterRootUri'), 'spt-create-farm-extensions.parameters.json')]",
+        "configFarmExtensions": "[concat(parameters('parameterRootUri'), 'spt-config-farm-extensions.parameters.json')]"
       }
     }
   },
@@ -37,14 +38,14 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-biz-deployment",
+      "name": "ra-sp2016-app-deployment",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
           "uri": "[variables('templates').deployment.virtualMachine]"
         },
         "parametersLink": {
-          "uri": "[variables('templates').parameter.biz]",
+          "uri": "[variables('templates').parameter.app]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -94,7 +95,7 @@
         }
       }
     },
-   {
+    {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
       "name": "ra-sp2016-create-farm-ext",
@@ -102,7 +103,7 @@
         "ra-sp2016-web-deployment",
         "ra-sp2016-dch-deployment",
         "ra-sp2016-srch-deployment",
-        "ra-sp2016-biz-deployment"
+        "ra-sp2016-app-deployment"
       ],
       "properties": {
         "mode": "Incremental",
@@ -114,5 +115,24 @@
           "contentVersion": "1.0.0.0"
         }
       }
-    }  ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-config-farm-ext",
+      "dependsOn": [
+        "ra-sp2016-create-farm-ext"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.extensions]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.createFarmExtensions]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    }
+  ]
 }

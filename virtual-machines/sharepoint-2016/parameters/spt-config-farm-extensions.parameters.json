@@ -8,7 +8,7 @@
           "vms": [ "ra-sp2016-app-vm2" ],
           "extensions": [
             {
-              "name": "createSPfarm",
+              "name": "configSPservers",
               "publisher": "Microsoft.Powershell",
               "type": "DSC",
               "typeHandlerVersion": "2.19",
@@ -19,8 +19,11 @@
                 "configurationFunction": "create-join-farm.ps1\\CreateJoinFarm",
                 "properties": {
                   "domainName": "contoso",
+                  "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "Application",
+                  "driveletter": "F",
+                  "CentralAdmin": "True",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -32,6 +35,14 @@
                   "SPSetupAccount": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:SPSetupAccountPassword"
+                  },
+                  "ServicePoolManagedAccount": {
+                    "userName": "sp_servicepool",
+                    "password": "privateSettingsRef:ServicePoolManagedAccount"
+                  },
+                  "WebPoolManagedAccount": {
+                    "userName": "sp_webpool",
+                    "password": "privateSettingsRef:WebPoolManagedAccount"
                   }
                 }
               },
@@ -39,7 +50,9 @@
                 "items": {
                   "PassPhrasePassword": "AweS0me@PW",
                   "FarmPassword": "AweS0me@PW",
-                  "SPSetupAccountPassword": "AweS0me@PW"
+                  "SPSetupAccountPassword": "AweS0me@PW",
+                  "ServicePoolManagedAccount": "AweS0me@PW",
+                  "WebPoolManagedAccount": "AweS0me@PW"
                 }
               }
 
@@ -50,7 +63,7 @@
           "vms": [ "ra-sp2016-wfe-vm1" ],
           "extensions": [
             {
-              "name": "createSPfarm",
+              "name": "configSPservers",
               "publisher": "Microsoft.Powershell",
               "type": "DSC",
               "typeHandlerVersion": "2.19",
@@ -61,8 +74,11 @@
                 "configurationFunction": "create-join-farm.ps1\\CreateJoinFarm",
                 "properties": {
                   "domainName": "contoso",
+                  "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "WebFrontEnd",
+                  "driveletter": "F",
+                  "CentralAdmin": "False",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -74,6 +90,14 @@
                   "SPSetupAccount": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:SPSetupAccountPassword"
+                  },
+                  "ServicePoolManagedAccount": {
+                    "userName": "sp_servicepool",
+                    "password": "privateSettingsRef:ServicePoolManagedAccount"
+                  },
+                  "WebPoolManagedAccount": {
+                    "userName": "sp_webpool",
+                    "password": "privateSettingsRef:WebPoolManagedAccount"
                   }
                 }
               },
@@ -81,7 +105,9 @@
                 "items": {
                   "PassPhrasePassword": "AweS0me@PW",
                   "FarmPassword": "AweS0me@PW",
-                  "SPSetupAccountPassword": "AweS0me@PW"
+                  "SPSetupAccountPassword": "AweS0me@PW",
+                  "ServicePoolManagedAccount": "AweS0me@PW",
+                  "WebPoolManagedAccount": "AweS0me@PW"
                 }
               }
 
@@ -92,7 +118,7 @@
           "vms": [ "ra-sp2016-wfe-vm2" ],
           "extensions": [
             {
-              "name": "createSPfarm",
+              "name": "configSPservers",
               "publisher": "Microsoft.Powershell",
               "type": "DSC",
               "typeHandlerVersion": "2.19",
@@ -103,8 +129,11 @@
                 "configurationFunction": "create-join-farm.ps1\\CreateJoinFarm",
                 "properties": {
                   "domainName": "contoso",
+                  "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "WebFrontEnd",
+                  "driveletter": "F",
+                  "CentralAdmin": "False",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -116,6 +145,14 @@
                   "SPSetupAccount": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:SPSetupAccountPassword"
+                  },
+                  "ServicePoolManagedAccount": {
+                    "userName": "sp_servicepool",
+                    "password": "privateSettingsRef:ServicePoolManagedAccount"
+                  },
+                  "WebPoolManagedAccount": {
+                    "userName": "sp_webpool",
+                    "password": "privateSettingsRef:WebPoolManagedAccount"
                   }
                 }
               },
@@ -123,7 +160,9 @@
                 "items": {
                   "PassPhrasePassword": "AweS0me@PW",
                   "FarmPassword": "AweS0me@PW",
-                  "SPSetupAccountPassword": "AweS0me@PW"
+                  "SPSetupAccountPassword": "AweS0me@PW",
+                  "ServicePoolManagedAccount": "AweS0me@PW",
+                  "WebPoolManagedAccount": "AweS0me@PW"
                 }
               }
 
@@ -134,7 +173,7 @@
           "vms": [ "ra-sp2016-dch-vm1" ],
           "extensions": [
             {
-              "name": "createSPfarm",
+              "name": "configSPservers",
               "publisher": "Microsoft.Powershell",
               "type": "DSC",
               "typeHandlerVersion": "2.19",
@@ -145,8 +184,11 @@
                 "configurationFunction": "create-join-farm.ps1\\CreateJoinFarm",
                 "properties": {
                   "domainName": "contoso",
+                  "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "DistributedCache",
+                  "driveletter": "F",
+                  "CentralAdmin": "False",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -158,6 +200,14 @@
                   "SPSetupAccount": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:SPSetupAccountPassword"
+                  },
+                  "ServicePoolManagedAccount": {
+                    "userName": "sp_servicepool",
+                    "password": "privateSettingsRef:ServicePoolManagedAccount"
+                  },
+                  "WebPoolManagedAccount": {
+                    "userName": "sp_webpool",
+                    "password": "privateSettingsRef:WebPoolManagedAccount"
                   }
                 }
               },
@@ -165,7 +215,9 @@
                 "items": {
                   "PassPhrasePassword": "AweS0me@PW",
                   "FarmPassword": "AweS0me@PW",
-                  "SPSetupAccountPassword": "AweS0me@PW"
+                  "SPSetupAccountPassword": "AweS0me@PW",
+                  "ServicePoolManagedAccount": "AweS0me@PW",
+                  "WebPoolManagedAccount": "AweS0me@PW"
                 }
               }
 
@@ -176,7 +228,7 @@
           "vms": [ "ra-sp2016-dch-vm2" ],
           "extensions": [
             {
-              "name": "createSPfarm",
+              "name": "configSPservers",
               "publisher": "Microsoft.Powershell",
               "type": "DSC",
               "typeHandlerVersion": "2.19",
@@ -187,8 +239,11 @@
                 "configurationFunction": "create-join-farm.ps1\\CreateJoinFarm",
                 "properties": {
                   "domainName": "contoso",
+                  "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "DistributedCache",
+                  "driveletter": "F",
+                  "CentralAdmin": "False",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -200,6 +255,14 @@
                   "SPSetupAccount": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:SPSetupAccountPassword"
+                  },
+                  "ServicePoolManagedAccount": {
+                    "userName": "sp_servicepool",
+                    "password": "privateSettingsRef:ServicePoolManagedAccount"
+                  },
+                  "WebPoolManagedAccount": {
+                    "userName": "sp_webpool",
+                    "password": "privateSettingsRef:WebPoolManagedAccount"
                   }
                 }
               },
@@ -207,7 +270,9 @@
                 "items": {
                   "PassPhrasePassword": "AweS0me@PW",
                   "FarmPassword": "AweS0me@PW",
-                  "SPSetupAccountPassword": "AweS0me@PW"
+                  "SPSetupAccountPassword": "AweS0me@PW",
+                  "ServicePoolManagedAccount": "AweS0me@PW",
+                  "WebPoolManagedAccount": "AweS0me@PW"
                 }
               }
 
@@ -218,7 +283,7 @@
           "vms": [ "ra-sp2016-srch-vm1" ],
           "extensions": [
             {
-              "name": "createSPfarm",
+              "name": "configSPservers",
               "publisher": "Microsoft.Powershell",
               "type": "DSC",
               "typeHandlerVersion": "2.19",
@@ -229,8 +294,11 @@
                 "configurationFunction": "create-join-farm.ps1\\CreateJoinFarm",
                 "properties": {
                   "domainName": "contoso",
+                  "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "Search",
+                  "driveletter": "F",
+                  "CentralAdmin": "False",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -242,6 +310,14 @@
                   "SPSetupAccount": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:SPSetupAccountPassword"
+                  },
+                  "ServicePoolManagedAccount": {
+                    "userName": "sp_servicepool",
+                    "password": "privateSettingsRef:ServicePoolManagedAccount"
+                  },
+                  "WebPoolManagedAccount": {
+                    "userName": "sp_webpool",
+                    "password": "privateSettingsRef:WebPoolManagedAccount"
                   }
                 }
               },
@@ -249,7 +325,9 @@
                 "items": {
                   "PassPhrasePassword": "AweS0me@PW",
                   "FarmPassword": "AweS0me@PW",
-                  "SPSetupAccountPassword": "AweS0me@PW"
+                  "SPSetupAccountPassword": "AweS0me@PW",
+                  "ServicePoolManagedAccount": "AweS0me@PW",
+                  "WebPoolManagedAccount": "AweS0me@PW"
                 }
               }
 
@@ -260,7 +338,7 @@
           "vms": [ "ra-sp2016-srch-vm2" ],
           "extensions": [
             {
-              "name": "createSPfarm",
+              "name": "configSPservers",
               "publisher": "Microsoft.Powershell",
               "type": "DSC",
               "typeHandlerVersion": "2.19",
@@ -271,8 +349,11 @@
                 "configurationFunction": "create-join-farm.ps1\\CreateJoinFarm",
                 "properties": {
                   "domainName": "contoso",
+                  "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
                   "ServerRole": "Search",
+                  "driveletter": "F",
+                  "CentralAdmin": "False",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -284,6 +365,14 @@
                   "SPSetupAccount": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:SPSetupAccountPassword"
+                  },
+                  "ServicePoolManagedAccount": {
+                    "userName": "sp_servicepool",
+                    "password": "privateSettingsRef:ServicePoolManagedAccount"
+                  },
+                  "WebPoolManagedAccount": {
+                    "userName": "sp_webpool",
+                    "password": "privateSettingsRef:WebPoolManagedAccount"
                   }
                 }
               },
@@ -291,7 +380,9 @@
                 "items": {
                   "PassPhrasePassword": "AweS0me@PW",
                   "FarmPassword": "AweS0me@PW",
-                  "SPSetupAccountPassword": "AweS0me@PW"
+                  "SPSetupAccountPassword": "AweS0me@PW",
+                  "ServicePoolManagedAccount": "AweS0me@PW",
+                  "WebPoolManagedAccount": "AweS0me@PW"
                 }
               }
 
