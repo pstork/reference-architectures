@@ -37,7 +37,7 @@
                     "password": "privateSettingsRef:SPSetupAccountPassword"
                   },
                   "ServicePoolManagedAccount": {
-                    "userName": "sp_svcpool",
+                    "userName": "sp_servicepool",
                     "password": "privateSettingsRef:ServicePoolManagedAccount"
                   },
                   "WebPoolManagedAccount": {
