@@ -14,16 +14,6 @@
           }
         ],
         "loadBalancingRules": [
-          {
-            "name": "lbr1",
-            "frontendPort": 80,
-            "backendPort": 80,
-            "protocol": "Tcp",
-            "backendPoolName": "ra-sp2016-wfe-lb-bep1",
-            "frontendIPConfigurationName": "ra-sp2016-wfe-lbfe1",
-            "enableFloatingIP": false,
-            "probeName": "ra-sp2016-wfe-lbp1"
-          }
         ],
         "probes": [
           {
