@@ -5,7 +5,7 @@
     "virtualMachinesExtensionSettings": {
       "value": [
         {
-          "vms": [ "ra-sp2016-sql-vm1" ],
+          "vms": [ "ra-sp2016-ad-vm1" ],
           "extensions": [
             {
               "name": "install-adds-forest",
