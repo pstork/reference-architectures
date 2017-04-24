@@ -40,7 +40,7 @@
             "createOption": "Empty"
           }
         },
-        "extensions": [
+       "extensions": [
           {
             "name": "join-ad-domain",
             "publisher": "Microsoft.Compute",
@@ -59,7 +59,7 @@
               "Password": "AweS0me@PW"
             }
           }
-         ],
+        ],
         "availabilitySet": {
           "useExistingAvailabilitySet": "No",
           "name": "app-as"
