@@ -2,10 +2,43 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "loadBalancerSettings": {
+      "value": {
+        "name": "ra-sp2016-wfe-lb2",
+        "frontendIPConfigurations": [
+          {
+            "name": "ra-sp2016-wfe-lbfe2",
+            "loadBalancerType": "internal",
+            "domainNameLabel": "",
+            "internalLoadBalancerSettings": {
+              "privateIPAddress": "10.0.1.100",
+              "subnetName": "web"
+            }
+          }
+        ],
+        "loadBalancingRules": [
+        ],
+        "probes": [
+          {
+            "name": "ra-sp2016-wfe-lbp2",
+            "port": 80,
+            "protocol": "Http",
+            "requestPath": "/"
+          }
+        ],
+        "backendPools": [
+          {
+            "name": "ra-sp2016-wfe-lb-bep2",
+            "nicIndex": 0
+          }
+        ],
+        "inboundNatRules": [ ]
+      }
+    },
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "ra-sp2016-app",
-        "computerNamePrefix": "app",
+        "namePrefix": "ra-sp2016-wfe",
+        "computerNamePrefix": "wfe",
         "size": "Standard_DS3_v2",
         "adminUsername": "testuser",
         "adminPassword": "AweS0me@PW",
@@ -16,7 +49,7 @@
           {
             "isPublic": "false",
             "isPrimary": "true",
-            "subnetName": "app",
+            "subnetName": "web",
             "privateIPAllocationMethod": "dynamic",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
@@ -59,24 +92,10 @@
               "Password": "AweS0me@PW"
             }
           }
-              "name": "install-dns-arecords",
-              "publisher": "Microsoft.Compute",
-              "type": "CustomScriptExtension",
-              "typeHandlerVersion": "1.8",
-              "autoUpgradeMinorVersion": false,
-              "settingsConfigMapperUri": "https://raw.githubusercontent.com/mspnp/reference-architectures/master/virtual-machines/n-tier-windows/templates/adds/adds-domain-controller-extension-settings-mapper.json",
-              "settingsConfig": {
-                "fileUris": [
-                  "https://raw.githubusercontent.com/pstork/template-building-blocks/pstork/SharePoint2016/scripts/add-dns.ps1"
-                ]
-              },
-              "protectedSettingsConfig": {
-              }
-          }
         ],
         "availabilitySet": {
           "useExistingAvailabilitySet": "No",
-          "name": "app-as"
+          "name": "wfe-as"
         }
       }
     },
