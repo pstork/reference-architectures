@@ -10,12 +10,20 @@
         ],
         "subnets": [
           {
-            "name": "frontend",
+            "name": "web",
             "addressPrefix": "10.0.1.0/24"
           },
           {
-            "name": "backend",
+            "name": "cache",
             "addressPrefix": "10.0.2.0/24"
+          },
+         {
+            "name": "app",
+            "addressPrefix": "10.0.5.0/24"
+          },
+          {
+            "name": "search",
+            "addressPrefix": "10.0.6.0/24"
           },
           {
             "name": "sql",

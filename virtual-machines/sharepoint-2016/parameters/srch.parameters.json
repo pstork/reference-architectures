@@ -16,7 +16,7 @@
           {
             "isPublic": "false",
             "isPrimary": "true",
-            "subnetName": "backend",
+            "subnetName": "search",
             "privateIPAllocationMethod": "dynamic",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",

@@ -16,7 +16,7 @@
           {
             "isPublic": "false",
             "isPrimary": "true",
-            "subnetName": "frontend",
+            "subnetName": "cache",
             "privateIPAllocationMethod": "dynamic",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",

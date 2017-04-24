@@ -46,7 +46,7 @@
           {
             "isPublic": "false",
             "isPrimary": "true",
-            "subnetName": "frontend",
+            "subnetName": "web",
             "privateIPAllocationMethod": "dynamic",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",

@@ -80,7 +80,7 @@
         {
           "name": "ra-sp2016-svca-nsg",
           "subnets": [
-            "backend"
+            "web"
           ],
           "networkInterfaces": [
           ],
@@ -90,7 +90,7 @@
         {
           "name": "ra-sp2016-svcb-nsg",
           "subnets": [
-            "frontend"
+            "cache"
           ],
           "networkInterfaces": [
           ],
@@ -98,6 +98,25 @@
           ]
         },
         {
+          "name": "ra-sp2016-svcc-nsg",
+          "subnets": [
+            "app"
+          ],
+          "networkInterfaces": [
+          ],
+          "securityRules": [
+          ]
+        },
+        {
+          "name": "ra-sp2016-svcd-nsg",
+          "subnets": [
+            "search"
+          ],
+          "networkInterfaces": [
+          ],
+          "securityRules": [
+          ]
+        },        {
           "name": "ra-sp2016-mgmt-nsg",
           "subnets": [ ],
           "networkInterfaces": [
