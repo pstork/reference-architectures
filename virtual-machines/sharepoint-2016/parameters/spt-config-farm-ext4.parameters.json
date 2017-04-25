@@ -5,7 +5,7 @@
     "virtualMachinesExtensionSettings": {
       "value": [
         {
-          "vms": [ "ra-sp2016-app-vm2" ],
+          "vms": [ "ra-sp2016-dch-vm1" ],
           "extensions": [
             {
               "name": "configSPservers",
@@ -21,9 +21,9 @@
                   "domainName": "contoso",
                   "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
-                  "ServerRole": "Application",
+                  "ServerRole": "DistributedCache",
                   "driveletter": "F",
-                  "CentralAdmin": "True",
+                  "CentralAdmin": "False",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
@@ -59,8 +59,8 @@
             }
           ]
         },
-         {
-          "vms": [ "ra-sp2016-srch-vm2" ],
+        {
+          "vms": [ "ra-sp2016-srch-vm1" ],
           "extensions": [
             {
               "name": "configSPservers",

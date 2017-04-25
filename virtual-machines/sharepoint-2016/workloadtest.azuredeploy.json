@@ -21,19 +21,21 @@
     "templates": {
       "deployment": {
         "loadBalancer": "[concat(parameters('templateRootUri'), 'templates/buildingBlocks/loadBalancer-backend-n-vm/azuredeploy.json')]",
+        "virtualNetwork": "[concat(parameters('templateRootUri'), 'templates/buildingBlocks/vnet-n-subnet/azuredeploy.json')]",
         "virtualMachine": "[concat(parameters('templateRootUri'), 'templates/buildingBlocks/multi-vm-n-nic-m-storage/azuredeploy.json')]",
         "extensions": "[concat(parameters('templateRootUri'), 'templates/buildingBlocks/virtualMachine-extensions/azuredeploy.json')]"
       },
       "parameter": {
-        "app": "[concat(parameters('parameterRootUri'), 'app.parameters.json')]",
-        "web": "[concat(parameters('parameterRootUri'), 'web.parameters.json')]",
-        "dch": "[concat(parameters('parameterRootUri'), 'dch.parameters.json')]",
-        "srch": "[concat(parameters('parameterRootUri'), 'srch.parameters.json')]",
-        "createFarmExtensions": "[concat(parameters('parameterRootUri'), 'spt-create-farm-extensions.parameters.json')]",
-        "configFarmExtensions": "[concat(parameters('parameterRootUri'), 'spt-config-farm-extensions.parameters.json')]",
-        "configFarmExt2": "[concat(parameters('parameterRootUri'), 'spt-config-farm-ext2.parameters.json')]",
-        "configFarmExt3": "[concat(parameters('parameterRootUri'), 'spt-config-farm-ext3.parameters.json')]",
-        "configFarmExt4": "[concat(parameters('parameterRootUri'), 'spt-config-farm-ext4.parameters.json')]"
+        "virtualNetwork": "[concat(parameters('parameterRootUri'), 'virtualNetwork.parameters.json')]",
+        "ad": "[concat(parameters('parameterRootUri'), 'adds/ad.parameters.json')]",
+        "adPrimaryExtension": "[concat(parameters('parameterRootUri'), 'adds/create-adds-forest-extension.parameters.json')]",
+        "adSecondaryExtension": "[concat(parameters('parameterRootUri'), 'adds/add-adds-domain-controller.parameters.json')]",
+        "vnetDnsUpdate": "[concat(parameters('parameterRootUri'), 'adds/virtualNetwork-adds-dns.parameters.json')]",
+        "sqlServers": "[concat(parameters('parameterRootUri'), 'sql.parameters.json')]",
+        "sqlFsw": "[concat(parameters('parameterRootUri'), 'fsw.parameters.json')]",
+        "sqlAOIaaSExtensions": "[concat(parameters('parameterRootUri'), 'sql-iaas-ao-extensions.parameters.json')]",
+        "sqlConfigureAOExtensions": "[concat(parameters('parameterRootUri'), 'sql-configure-ao-extension.parameters.json')]",
+        "managementTier": "[concat(parameters('parameterRootUri'), 'virtualMachines-mgmt.parameters.json')]"
       }
     }
   },
@@ -41,14 +43,14 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-app-deployment",
+      "name": "ra-sp2016-vnet-deployment",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[variables('templates').deployment.virtualMachine]"
+          "uri": "[variables('templates').deployment.virtualNetwork]"
         },
         "parametersLink": {
-          "uri": "[variables('templates').parameter.app]",
+          "uri": "[variables('templates').parameter.virtualNetwork]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -56,14 +58,107 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-web-deployment",
+      "name": "ra-sp2016-mgmt-deployment",
+      "dependsOn": [
+        "ra-sp2016-vnet-deployment"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.virtualMachine]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.managementTier]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-ad-deployment",
+      "dependsOn": [
+        "ra-sp2016-vnet-deployment"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.virtualMachine]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.ad]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-update-dns",
+      "dependsOn": [
+        "ra-sp2016-ad-deployment"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.virtualNetwork]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.vnetDnsUpdate]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-primary-ad-ext",
+      "dependsOn": [
+        "ra-sp2016-update-dns"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.extensions]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.adPrimaryExtension]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-secondary-ad-ext",
+      "dependsOn": [
+        "ra-sp2016-primary-ad-ext"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.extensions]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.adSecondaryExtension]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-sql-servers",
+      "dependsOn": [
+        "ra-sp2016-secondary-ad-ext"
+      ],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
           "uri": "[variables('templates').deployment.loadBalancer]"
         },
         "parametersLink": {
-          "uri": "[variables('templates').parameter.web]",
+          "uri": "[variables('templates').parameter.sqlServers]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -71,14 +166,17 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-dch-deployment",
+      "name": "ra-sp2016-fsw",
+      "dependsOn": [
+        "ra-sp2016-secondary-ad-ext"
+      ],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
           "uri": "[variables('templates').deployment.virtualMachine]"
         },
         "parametersLink": {
-          "uri": "[variables('templates').parameter.dch]",
+          "uri": "[variables('templates').parameter.sqlFsw]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -86,14 +184,18 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-srch-deployment",
+      "name": "ra-sp2016-ao-iaas-ext",
+      "dependsOn": [
+        "ra-sp2016-sql-servers",
+        "ra-sp2016-fsw"
+      ],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[variables('templates').deployment.virtualMachine]"
+          "uri": "[variables('templates').deployment.extensions]"
         },
         "parametersLink": {
-          "uri": "[variables('templates').parameter.srch]",
+          "uri": "[variables('templates').parameter.sqlAOIaaSExtensions]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -101,12 +203,9 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-create-farm-ext",
+      "name": "ra-sp2016-configure-ao-ext",
       "dependsOn": [
-        "ra-sp2016-web-deployment",
-        "ra-sp2016-dch-deployment",
-        "ra-sp2016-srch-deployment",
-        "ra-sp2016-app-deployment"
+        "ra-sp2016-ao-iaas-ext"
       ],
       "properties": {
         "mode": "Incremental",
@@ -114,83 +213,11 @@
           "uri": "[variables('templates').deployment.extensions]"
         },
         "parametersLink": {
-          "uri": "[variables('templates').parameter.createFarmExtensions]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-config-farm-ext",
-      "dependsOn": [
-        "ra-sp2016-create-farm-ext"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('templates').deployment.extensions]"
-        },
-        "parametersLink": {
-          "uri": "[variables('templates').parameter.configFarmExtensions]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    },
-	   {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-config-farm-ext2",
-      "dependsOn": [
-        "ra-sp2016-config-farm-ext"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('templates').deployment.extensions]"
-        },
-        "parametersLink": {
-          "uri": "[variables('templates').parameter.configFarmExt2]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    },
-    	   {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-config-farm-ext3",
-      "dependsOn": [
-        "ra-sp2016-config-farm-ext2"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('templates').deployment.extensions]"
-        },
-        "parametersLink": {
-          "uri": "[variables('templates').parameter.configFarmExt3]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    },
-	   {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-config-farm-ext4",
-      "dependsOn": [
-        "ra-sp2016-config-farm-ext3"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('templates').deployment.extensions]"
-        },
-        "parametersLink": {
-          "uri": "[variables('templates').parameter.configFarmExt4]",
+          "uri": "[variables('templates').parameter.sqlConfigureAOExtensions]",
           "contentVersion": "1.0.0.0"
         }
       }
     }
-
   ]
 }
+
