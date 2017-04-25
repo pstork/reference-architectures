@@ -31,7 +31,7 @@
         "srch": "[concat(parameters('parameterRootUri'), 'srch.parameters.json')]",
         "createFarmExtensions": "[concat(parameters('parameterRootUri'), 'spt-create-farm-extensions.parameters.json')]",
         "configFarmExtensions": "[concat(parameters('parameterRootUri'), 'spt-config-farm-extensions.parameters.json')]"
-        "configFarmExt2": "[concat(parameters('parameterRootUri'), 'spt-config-farm-extensions2.parameters.json')]"
+        "configFarmExtensions2": "[concat(parameters('parameterRootUri'), 'spt-config-farm-extensions2.parameters.json')]"
       }
     }
   },
@@ -148,7 +148,7 @@
           "uri": "[variables('templates').deployment.extensions]"
         },
         "parametersLink": {
-          "uri": "[variables('templates').parameter.configFarmExt2]",
+          "uri": "[variables('templates').parameter.configFarmExtensions2]",
           "contentVersion": "1.0.0.0"
         }
       }
