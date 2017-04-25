@@ -31,7 +31,6 @@
         "srch": "[concat(parameters('parameterRootUri'), 'srch.parameters.json')]",
         "createFarmExtensions": "[concat(parameters('parameterRootUri'), 'spt-create-farm-extensions.parameters.json')]",
         "configFarmExtensions": "[concat(parameters('parameterRootUri'), 'spt-config-farm-extensions.parameters.json')]"
-        "configFarmExtensions2": "[concat(parameters('parameterRootUri'), 'spt-config-farm-extensions2.parameters.json')]"
       }
     }
   },
@@ -131,24 +130,6 @@
         },
         "parametersLink": {
           "uri": "[variables('templates').parameter.configFarmExtensions]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    },
-	{
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-config-farm-ext2",
-      "dependsOn": [
-        "ra-sp2016-config-farm-ext"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('templates').deployment.extensions]"
-        },
-        "parametersLink": {
-          "uri": "[variables('templates').parameter.configFarmExtensions2]",
           "contentVersion": "1.0.0.0"
         }
       }
