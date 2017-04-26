@@ -60,9 +60,9 @@
    {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-hybrid-vpn-deployment",
+      "name": "ra-sp2016-vpn-deployment",
       "dependsOn": [
-        "ra-hybrid-vnet-deployment"
+        "ra-sp2016-vnet-deployment"
       ],
       "properties": {
         "mode": "Incremental",
