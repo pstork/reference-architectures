@@ -33,8 +33,7 @@
         "configFarmExtensions": "[concat(parameters('parameterRootUri'), 'spt-config-farm-extensions.parameters.json')]",
         "configFarmExt2": "[concat(parameters('parameterRootUri'), 'spt-config-farm-ext2.parameters.json')]",
         "configFarmExt3": "[concat(parameters('parameterRootUri'), 'spt-config-farm-ext3.parameters.json')]",
-        "configFarmExt4": "[concat(parameters('parameterRootUri'), 'spt-config-farm-ext4.parameters.json')]",
-        "add-arecord": "[concat(parameters('parameterRootUri'), 'add-dns-arecord.parameter.json')]"
+        "configFarmExt4": "[concat(parameters('parameterRootUri'), 'spt-config-farm-ext4.parameters.json')]"
       }
     }
   },
