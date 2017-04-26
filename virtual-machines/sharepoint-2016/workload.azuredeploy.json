@@ -33,7 +33,8 @@
         "configFarmExtensions": "[concat(parameters('parameterRootUri'), 'spt-config-farm-extensions.parameters.json')]",
         "configFarmExt2": "[concat(parameters('parameterRootUri'), 'spt-config-farm-ext2.parameters.json')]",
         "configFarmExt3": "[concat(parameters('parameterRootUri'), 'spt-config-farm-ext3.parameters.json')]",
-        "configFarmExt4": "[concat(parameters('parameterRootUri'), 'spt-config-farm-ext4.parameters.json')]"
+        "configFarmExt4": "[concat(parameters('parameterRootUri'), 'spt-config-farm-ext4.parameters.json')]",
+        "add-arecord": "[concat(parameters('parameterRootUri'), 'add-dns-arecord.parameter.json')]"
       }
     }
   },
@@ -190,7 +191,24 @@
           "contentVersion": "1.0.0.0"
         }
       }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-add-arecord-ext",
+      "dependsOn": [
+        "ra-sp2016-config-farm-ext"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.extensions]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.add-arecord]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
     }
-
   ]
 }

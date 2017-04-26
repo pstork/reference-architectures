@@ -36,6 +36,10 @@
           {
             "name": "mgmt",
             "addressPrefix": "10.0.0.128/25"
+          },
+          {
+            "name": "GatewaySubnet",
+            "addressPrefix": "10.0.255.224/27"
           }
         ],
         "dnsServers": [

@@ -60,7 +60,7 @@
           ]
         },
          {
-          "vms": [ "ra-sp2016-dch-vm2" ],
+          "vms": [ "ra-sp2016-app-vm2" ],
           "extensions": [
             {
               "name": "configSPservers",
@@ -76,9 +76,9 @@
                   "domainName": "contoso",
                   "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
-                  "ServerRole": "DistributedCache",
+                  "ServerRole": "Application",
                   "driveletter": "F",
-                  "CentralAdmin": "False",
+                  "CentralAdmin": "True",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"

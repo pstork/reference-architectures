@@ -5,7 +5,7 @@
     "virtualMachinesExtensionSettings": {
       "value": [
         {
-          "vms": [ "ra-sp2016-dch-vm1" ],
+          "vms": [ "ra-sp2016-dch-vm2" ],
           "extensions": [
             {
               "name": "configSPservers",
@@ -59,8 +59,8 @@
             }
           ]
         },
-        {
-          "vms": [ "ra-sp2016-srch-vm1" ],
+         {
+          "vms": [ "ra-sp2016-srch-vm2" ],
           "extensions": [
             {
               "name": "configSPservers",

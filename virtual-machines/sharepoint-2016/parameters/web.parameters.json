@@ -7,12 +7,14 @@
         "name": "ra-sp2016-wfe-lb",
         "frontendIPConfigurations": [
           {
-            "name": "ra-sp2016-wfe-lbfe1",
-            "loadBalancerType": "public",
+            "name": "ra-sp2016-web-lbfe1",
+            "loadBalancerType": "internal",
             "domainNameLabel": "",
-            "internalLoadBalancerSettings": { }
-          }
-        ],
+            "internalLoadBalancerSettings": {
+              "privateIPAddress": "10.0.1.100",
+              "subnetName": "web"
+            }
+          }        ],
         "loadBalancingRules": [
         ],
         "probes": [

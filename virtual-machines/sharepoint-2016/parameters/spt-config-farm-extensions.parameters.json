@@ -5,7 +5,7 @@
     "virtualMachinesExtensionSettings": {
       "value": [
         {
-          "vms": [ "ra-sp2016-wfe-vm1" ],
+          "vms": [ "ra-sp2016-app-vm1" ],
           "extensions": [
             {
               "name": "configSPservers",
@@ -21,9 +21,9 @@
                   "domainName": "contoso",
                   "DomainFQDNName": "contoso.com",
                   "sqlAlwaysOnEndpointName": "alwayson-ag-listener",
-                  "ServerRole": "WebFrontEnd",
+                  "ServerRole": "Application",
                   "driveletter": "F",
-                  "CentralAdmin": "False",
+                  "CentralAdmin": "True",
                   "Passphrase": {
                     "userName": "testuser",
                     "password": "privateSettingsRef:PassPhrasePassword"
