@@ -29,11 +29,11 @@
         "web": "[concat(parameters('parameterRootUri'), 'web.parameters.json')]",
         "dch": "[concat(parameters('parameterRootUri'), 'dch.parameters.json')]",
         "srch": "[concat(parameters('parameterRootUri'), 'srch.parameters.json')]",
-        "createFarmExtensions": "[concat(parameters('parameterRootUri'), 'spt-create-farm-extensions.parameters.json')]",
-        "configFarmExtensions": "[concat(parameters('parameterRootUri'), 'spt-config-farm-extensions.parameters.json')]",
-        "configFarmExt2": "[concat(parameters('parameterRootUri'), 'spt-config-farm-ext2.parameters.json')]",
-        "configFarmExt3": "[concat(parameters('parameterRootUri'), 'spt-config-farm-ext3.parameters.json')]",
-        "configFarmExt4": "[concat(parameters('parameterRootUri'), 'spt-config-farm-ext4.parameters.json')]"
+        "createFarmAPP1Ext": "[concat(parameters('parameterRootUri'), 'spt-create-farm-app1-ext.parameters.json')]",
+        "configFarmDCH1Ext": "[concat(parameters('parameterRootUri'), 'spt-config-farm-dch1-ext.parameters.json')]",
+        "configFarmWFE1SRCH1Ext": "[concat(parameters('parameterRootUri'), 'spt-config-farm-wfe1-srch1-ext.parameters.json')]",
+        "configFarmWfe2App2Ext": "[concat(parameters('parameterRootUri'), 'spt-config-farm-wfe2-app2-ext.parameters.json')]",
+        "configFarmDch2Srch2Ext": "[concat(parameters('parameterRootUri'), 'spt-config-farm-dch2-srch2-ext.parameters.json')]"
       }
     }
   },
@@ -101,7 +101,7 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-create-farm-ext",
+      "name": "ra-sp2016-create-farm-App1-ext",
       "dependsOn": [
         "ra-sp2016-web-deployment",
         "ra-sp2016-dch-deployment",
@@ -114,7 +114,7 @@
           "uri": "[variables('templates').deployment.extensions]"
         },
         "parametersLink": {
-          "uri": "[variables('templates').parameter.createFarmExtensions]",
+          "uri": "[variables('templates').parameter.createFarmAPP1Ext]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -122,9 +122,9 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-config-farm-ext",
+      "name": "ra-sp2016-config-farm-Dch1-ext",
       "dependsOn": [
-        "ra-sp2016-create-farm-ext"
+        "ra-sp2016-create-farm-App1-ext"
       ],
       "properties": {
         "mode": "Incremental",
@@ -132,7 +132,7 @@
           "uri": "[variables('templates').deployment.extensions]"
         },
         "parametersLink": {
-          "uri": "[variables('templates').parameter.configFarmExtensions]",
+          "uri": "[variables('templates').parameter.configFarmDCH1Ext]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -140,9 +140,9 @@
 	   {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-config-farm-ext2",
+      "name": "ra-sp2016-config-farm-Wfe1-Srch1-ext",
       "dependsOn": [
-        "ra-sp2016-config-farm-ext"
+        "ra-sp2016-config-farm-Dch1-ext"
       ],
       "properties": {
         "mode": "Incremental",
@@ -150,17 +150,17 @@
           "uri": "[variables('templates').deployment.extensions]"
         },
         "parametersLink": {
-          "uri": "[variables('templates').parameter.configFarmExt2]",
+          "uri": "[variables('templates').parameter.configFarmWFE1SRCH1Ext]",
           "contentVersion": "1.0.0.0"
         }
       }
     },
-    	   {
+    {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-config-farm-ext3",
+      "name": "ra-sp2016-config-farm-Wfe2-App2-ext",
       "dependsOn": [
-        "ra-sp2016-config-farm-ext2"
+        "ra-sp2016-config-farm-Wfe1-Srch1-ext"
       ],
       "properties": {
         "mode": "Incremental",
@@ -168,7 +168,7 @@
           "uri": "[variables('templates').deployment.extensions]"
         },
         "parametersLink": {
-          "uri": "[variables('templates').parameter.configFarmExt3]",
+          "uri": "[variables('templates').parameter.configFarmWfe2App2Ext]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -176,9 +176,9 @@
 	   {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-config-farm-ext4",
+      "name": "ra-sp2016-config-farm-Dch2-Srch2-ext",
       "dependsOn": [
-        "ra-sp2016-config-farm-ext3"
+        "ra-sp2016-config-farm-Wfe2-App2-ext"
       ],
       "properties": {
         "mode": "Incremental",
@@ -186,7 +186,7 @@
           "uri": "[variables('templates').deployment.extensions]"
         },
         "parametersLink": {
-          "uri": "[variables('templates').parameter.configFarmExt4]",
+          "uri": "[variables('templates').parameter.configFarmDch2Srch2Ext]",
           "contentVersion": "1.0.0.0"
         }
       }

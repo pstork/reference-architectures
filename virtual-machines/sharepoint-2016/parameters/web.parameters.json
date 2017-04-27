@@ -14,8 +14,27 @@
               "privateIPAddress": "10.0.1.100",
               "subnetName": "web"
             }
-          }        ],
+          }
+        ],
         "loadBalancingRules": [
+          {
+            "name": "http",
+            "frontendPort": 80,
+            "backendPort": 80,
+            "protocol": "Tcp",
+            "backendPoolName": "ra-sp2016-wfe-lb-bep1",
+            "frontendIPConfigurationName": "ra-sp2016-web-lbfe1",
+            "probeName": "ra-sp2016-wfe-lbp1"
+          },
+          {
+            "name": "https",
+            "frontendPort": 443,
+            "backendPort": 443,
+            "protocol": "Tcp",
+            "backendPoolName": "ra-sp2016-wfe-lb-bep1",
+            "frontendIPConfigurationName": "ra-sp2016-web-lbfe1",
+            "probeName": "ra-sp2016-wfe-lbp1"
+          }
         ],
         "probes": [
           {
@@ -31,7 +50,7 @@
             "nicIndex": 0
           }
         ],
-        "inboundNatRules": [ ]
+        "inboundNatRules": []
       }
     },
     "virtualMachinesSettings": {
@@ -52,7 +71,7 @@
             "privateIPAllocationMethod": "dynamic",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
-            "dnsServers": [ ]
+            "dnsServers": []
           }
         ],
         "imageReference": {
@@ -113,4 +132,3 @@
     }
   }
 }
-
