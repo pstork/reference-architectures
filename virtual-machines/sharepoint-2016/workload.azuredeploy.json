@@ -33,7 +33,8 @@
         "configFarmDCH1Ext": "[concat(parameters('parameterRootUri'), 'spt-config-farm-dch1-ext.parameters.json')]",
         "configFarmWFE1SRCH1Ext": "[concat(parameters('parameterRootUri'), 'spt-config-farm-wfe1-srch1-ext.parameters.json')]",
         "configFarmWfe2App2Ext": "[concat(parameters('parameterRootUri'), 'spt-config-farm-wfe2-app2-ext.parameters.json')]",
-        "configFarmDch2Srch2Ext": "[concat(parameters('parameterRootUri'), 'spt-config-farm-dch2-srch2-ext.parameters.json')]"
+        "configFarmDch2Srch2Ext": "[concat(parameters('parameterRootUri'), 'spt-config-farm-dch2-srch2-ext.parameters.json')]",
+        "addArecord": "[concat(parameters('parameterRootUri'), 'add-dns-arecord.parameters.json')]"
       }
     }
   },
@@ -187,6 +188,24 @@
         },
         "parametersLink": {
           "uri": "[variables('templates').parameter.configFarmDch2Srch2Ext]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-add-dns-arecord-ext",
+      "dependsOn": [
+        "ra-sp2016-config-farm-Wfe1-Srch1-ext"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.extensions]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.addArecord]",
           "contentVersion": "1.0.0.0"
         }
       }
