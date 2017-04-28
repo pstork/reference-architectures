@@ -4,8 +4,8 @@
   "parameters": {
     "virtualNetworkSettings": {
       "value": {
-        "name": "ra-hybrid-vpn-vnet",
-        "resourceGroup": "ra-hybrid-vpn-rg"
+        "name": "ra-sp2016-vnet",
+        "resourceGroup": "ra-sp2016-network-rg"
       }
     },
     "virtualNetworkGatewaySettings": {
