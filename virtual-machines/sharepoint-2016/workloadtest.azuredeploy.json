@@ -33,7 +33,6 @@
       "apiVersion": "2015-01-01",
       "name": "ra-sp2016-vpn-deployment",
       "dependsOn": [
-        "ra-sp2016-vnet-deployment"
       ],
       "properties": {
         "mode": "Incremental",
