@@ -20,10 +20,10 @@
   "variables": {
     "templates": {
       "deployment": {
-        "extensions": "[concat(parameters('templateRootUri'), 'templates/buildingBlocks/virtualMachine-extensions/azuredeploy.json')]"
+        "virtualNetworkGateway": "[uri(parameters('templateRootUri'), 'templates/buildingBlocks/vpn-gateway-vpn-connection/azuredeploy.json')]"
       },
       "parameter": {
-        "addArecord": "[concat(parameters('parameterRootUri'), 'add-dns-arecord.parameters.json')]"
+        "virtualNetworkGateway": "[uri(parameters('parameterRootUri'), 'virtualNetworkGateway.parameters.json')]"
       }
     }
   },
@@ -31,20 +31,20 @@
   {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-add-dns-arecord-ext",
+      "name": "ra-sp2016-vpn-deployment",
       "dependsOn": [
+        "ra-sp2016-vnet-deployment"
       ],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[variables('templates').deployment.extensions]"
+          "uri": "[variables('templates').deployment.virtualNetworkGateway]"
         },
         "parametersLink": {
-          "uri": "[variables('templates').parameter.addArecord]",
-          "contentVersion": "1.0.0.0"
+          "uri": "[variables('templates').parameter.virtualNetworkGateway]"
         }
       }
-    }
+   }
   ]
 }
 
