@@ -37,7 +37,7 @@
         "sqlFsw": "[concat(parameters('parameterRootUri'), 'fsw.parameters.json')]",
         "sqlAOIaaSExtensions": "[concat(parameters('parameterRootUri'), 'sql-iaas-ao-extensions.parameters.json')]",
         "sqlConfigureAOExtensions": "[concat(parameters('parameterRootUri'), 'sql-configure-ao-extension.parameters.json')]",
-        "managementTier": "[concat(parameters('parameterRootUri'), 'virtualMachines-mgmt.parameters.json')]"
+        "managementTier": "[concat(parameters('parameterRootUri'), 'virtualMachines-mgmt1.parameters.json')]"
       }
     }
   },
