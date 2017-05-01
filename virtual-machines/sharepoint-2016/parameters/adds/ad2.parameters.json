@@ -18,7 +18,7 @@
             "isPrimary": "true",
             "subnetName": "ad",
             "privateIPAllocationMethod": "static",
-            "startingIPAddress": "10.0.4.4",
+            "startingIPAddress": "10.0.4.5",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
             "dnsServers": [ ]
@@ -44,7 +44,7 @@
         "extensions": [
         ],
         "availabilitySet": {
-          "useExistingAvailabilitySet": "No",
+          "useExistingAvailabilitySet": "Yes",
           "name": "ad-as"
         }
       }
@@ -59,7 +59,7 @@
       "value": {
         "storageAccountsCount": 2,
         "vmCount": 1,
-        "vmStartIndex": 1
+        "vmStartIndex": 2
       }
     }
   }
