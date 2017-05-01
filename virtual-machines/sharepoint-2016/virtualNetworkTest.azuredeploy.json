@@ -37,12 +37,12 @@
         "sqlFsw": "[concat(parameters('parameterRootUri'), 'fsw.parameters.json')]",
         "sqlAOIaaSExtensions": "[concat(parameters('parameterRootUri'), 'sql-iaas-ao-extensions.parameters.json')]",
         "sqlConfigureAOExtensions": "[concat(parameters('parameterRootUri'), 'sql-configure-ao-extension.parameters.json')]",
-        "managementTier": "[concat(parameters('parameterRootUri'), 'virtualMachines-mgmt1.parameters.json')]"
+        "managementTier": "[concat(parameters('parameterRootUri'), 'virtualMachines-mgmt.parameters.json')]"
       }
     }
   },
-  "resources": [
-   {
+   "resources": [
+    {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
       "name": "ra-sp2016-vnet-deployment",
@@ -57,6 +57,23 @@
         }
       }
     },
+   {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-vpn-deployment",
+      "dependsOn": [
+        "ra-sp2016-vnet-deployment"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.virtualNetworkGateway]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.virtualNetworkGateway]"
+        }
+      }
+   },    
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
@@ -71,6 +88,151 @@
         },
         "parametersLink": {
           "uri": "[variables('templates').parameter.managementTier]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-ad-deployment",
+      "dependsOn": [
+        "ra-sp2016-vnet-deployment"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.virtualMachine]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.ad]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-update-dns",
+      "dependsOn": [
+        "ra-sp2016-ad-deployment"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.virtualNetwork]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.vnetDnsUpdate]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-primary-ad-ext",
+      "dependsOn": [
+        "ra-sp2016-update-dns"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.extensions]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.adPrimaryExtension]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-secondary-ad-ext",
+      "dependsOn": [
+        "ra-sp2016-primary-ad-ext"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.extensions]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.adSecondaryExtension]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-sql-servers",
+      "dependsOn": [
+        "ra-sp2016-secondary-ad-ext"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.loadBalancer]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.sqlServers]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-fsw",
+      "dependsOn": [
+        "ra-sp2016-secondary-ad-ext"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.virtualMachine]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.sqlFsw]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-ao-iaas-ext",
+      "dependsOn": [
+        "ra-sp2016-sql-servers",
+        "ra-sp2016-fsw"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.extensions]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.sqlAOIaaSExtensions]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-configure-ao-ext",
+      "dependsOn": [
+        "ra-sp2016-ao-iaas-ext"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.extensions]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.sqlConfigureAOExtensions]",
           "contentVersion": "1.0.0.0"
         }
       }
