@@ -150,9 +150,9 @@
    {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-ad-deployment",
+      "name": "ra-sp2016-ad2-deployment",
       "dependsOn": [
-        "ra-sp2016-vnet-deployment"
+        "ra-sp2016-primary-ad-ext"
       ],
       "properties": {
         "mode": "Incremental",
@@ -170,7 +170,7 @@
       "apiVersion": "2015-01-01",
       "name": "ra-sp2016-secondary-ad-ext",
       "dependsOn": [
-        "ra-sp2016-primary-ad-ext"
+        "ra-sp2016-ad2-deployment"
       ],
       "properties": {
         "mode": "Incremental",
