@@ -74,60 +74,6 @@
           "contentVersion": "1.0.0.0"
         }
       }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-ad-deployment",
-      "dependsOn": [
-        "ra-sp2016-vnet-deployment"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('templates').deployment.virtualMachine]"
-        },
-        "parametersLink": {
-          "uri": "[variables('templates').parameter.ad]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-update-dns",
-      "dependsOn": [
-        "ra-sp2016-ad-deployment"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('templates').deployment.virtualNetwork]"
-        },
-        "parametersLink": {
-          "uri": "[variables('templates').parameter.vnetDnsUpdate]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-primary-ad-ext",
-      "dependsOn": [
-        "ra-sp2016-update-dns"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('templates').deployment.extensions]"
-        },
-        "parametersLink": {
-          "uri": "[variables('templates').parameter.adPrimaryExtension]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
     }
   ]
 }
