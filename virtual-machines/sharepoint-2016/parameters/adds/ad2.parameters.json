@@ -42,12 +42,8 @@
           "caching": "ReadWrite"
         },
         "extensions": [
-        ],
-        "availabilitySet": {
-          "useExistingAvailabilitySet": "Yes",
-          "name": "ad-as"
-        }
-      }
+        ]
+       }
     },
     "virtualNetworkSettings": {
       "value": {
