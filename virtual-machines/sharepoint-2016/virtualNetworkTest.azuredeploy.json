@@ -160,7 +160,7 @@
           "uri": "[variables('templates').deployment.virtualMachine]"
         },
         "parametersLink": {
-          "uri": "[variables('templates').parameter.ad]",
+          "uri": "[variables('templates').parameter.ad2]",
           "contentVersion": "1.0.0.0"
         }
       }
