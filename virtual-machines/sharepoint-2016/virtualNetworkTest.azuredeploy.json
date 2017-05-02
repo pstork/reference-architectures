@@ -42,7 +42,7 @@
       }
     }
   },
-   "resources": [
+ "resources": [
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
@@ -58,7 +58,24 @@
         }
       }
     },
-       {
+   {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-vpn-deployment",
+      "dependsOn": [
+        "ra-sp2016-vnet-deployment"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.virtualNetworkGateway]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.virtualNetworkGateway]"
+        }
+      }
+   },    
+    {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
       "name": "ra-sp2016-mgmt-deployment",
@@ -97,24 +114,6 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-update-dns",
-      "dependsOn": [
-        "ra-sp2016-ad-deployment"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('templates').deployment.virtualNetwork]"
-        },
-        "parametersLink": {
-          "uri": "[variables('templates').parameter.vnetDnsUpdate]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2015-01-01",
       "name": "ra-sp2016-primary-ad-ext",
       "dependsOn": [
         "ra-sp2016-update-dns"
@@ -130,30 +129,12 @@
         }
       }
     },
-   {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2015-01-01",
-      "name": "ra-sp2016-ad2-deployment",
-      "dependsOn": [
-        "ra-sp2016-primary-ad-ext"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('templates').deployment.virtualMachine]"
-        },
-        "parametersLink": {
-          "uri": "[variables('templates').parameter.ad2]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    },
-        {
+    {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
       "name": "ra-sp2016-secondary-ad-ext",
       "dependsOn": [
-        "ra-sp2016-ad2-deployment"
+        "ra-sp2016-primary-ad-ext"
       ],
       "properties": {
         "mode": "Incremental",
@@ -166,7 +147,7 @@
         }
       }
     },
-       {
+    {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
       "name": "ra-sp2016-sql-servers",
@@ -238,7 +219,7 @@
           "contentVersion": "1.0.0.0"
         }
       }
-    } 
+    }
   ]
 }
 
