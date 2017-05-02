@@ -21,11 +21,11 @@
             "startingIPAddress": "10.0.4.5",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
-            "dnsServers": [ ]
+            "dnsServers": []
           }
         ],
         "imageReference": {
-         "publisher": "MicrosoftWindowsServer",
+          "publisher": "MicrosoftWindowsServer",
           "offer": "WindowsServer",
           "sku": "2012-R2-Datacenter",
           "version": "latest"
@@ -41,9 +41,12 @@
         "osDisk": {
           "caching": "ReadWrite"
         },
-        "extensions": [
-        ]
-       }
+        "extensions": [],
+        "availabilitySet": {
+          "useExistingAvailabilitySet": "No",
+          "name": "ad-as"
+        }
+      }
     },
     "virtualNetworkSettings": {
       "value": {
@@ -60,4 +63,3 @@
     }
   }
 }
-
