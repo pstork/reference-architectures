@@ -116,7 +116,7 @@
       "apiVersion": "2015-01-01",
       "name": "ra-sp2016-primary-ad-ext",
       "dependsOn": [
-        "ra-sp2016-update-dns"
+        "ra-sp2016-ad-deployment"
       ],
       "properties": {
         "mode": "Incremental",
