@@ -165,6 +165,79 @@
           "contentVersion": "1.0.0.0"
         }
       }
+    },
+       {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-sql-servers",
+      "dependsOn": [
+        "ra-sp2016-secondary-ad-ext"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.loadBalancer]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.sqlServers]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-fsw",
+      "dependsOn": [
+        "ra-sp2016-secondary-ad-ext"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.virtualMachine]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.sqlFsw]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-ao-iaas-ext",
+      "dependsOn": [
+        "ra-sp2016-sql-servers",
+        "ra-sp2016-fsw"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.extensions]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.sqlAOIaaSExtensions]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-configure-ao-ext",
+      "dependsOn": [
+        "ra-sp2016-ao-iaas-ext"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.extensions]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.sqlConfigureAOExtensions]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
     } 
   ]
 }
