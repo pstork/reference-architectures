@@ -58,6 +58,24 @@
         }
       }
     },
+       {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-mgmt-deployment",
+      "dependsOn": [
+        "ra-sp2016-vnet-deployment"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.virtualMachine]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.managementTier]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
@@ -126,6 +144,24 @@
         },
         "parametersLink": {
           "uri": "[variables('templates').parameter.ad2]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+        {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ra-sp2016-secondary-ad-ext",
+      "dependsOn": [
+        "ra-sp2016-ad2-deployment"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.extensions]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.adSecondaryExtension]",
           "contentVersion": "1.0.0.0"
         }
       }
