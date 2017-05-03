@@ -70,7 +70,8 @@
             "isPublic": "false",
             "isPrimary": "true",
             "subnetName": "web",
-            "privateIPAllocationMethod": "dynamic",
+            "privateIPAllocationMethod": "static",
+            "startingIPAddress": "10.0.1.4",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
             "dnsServers": []
