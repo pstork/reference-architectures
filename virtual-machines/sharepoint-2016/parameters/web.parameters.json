@@ -24,6 +24,7 @@
             "protocol": "Tcp",
             "backendPoolName": "ra-sp2016-wfe-lb-bep1",
             "frontendIPConfigurationName": "ra-sp2016-web-lbfe1",
+            "enableFloatingIP": true,
             "probeName": "ra-sp2016-wfe-lbp1"
           },
           {
@@ -33,6 +34,7 @@
             "protocol": "Tcp",
             "backendPoolName": "ra-sp2016-wfe-lb-bep1",
             "frontendIPConfigurationName": "ra-sp2016-web-lbfe1",
+            "enableFloatingIP": true,
             "probeName": "ra-sp2016-wfe-lbp1"
           }
         ],
