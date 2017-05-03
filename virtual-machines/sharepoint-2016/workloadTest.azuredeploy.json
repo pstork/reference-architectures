@@ -89,7 +89,6 @@
       "apiVersion": "2015-01-01",
       "name": "ra-sp2016-create-farm-App1-ext",
       "dependsOn": [
-        "ra-sp2016-web-deployment",
         "ra-sp2016-dch-deployment",
         "ra-sp2016-srch-deployment",
         "ra-sp2016-app-deployment"
