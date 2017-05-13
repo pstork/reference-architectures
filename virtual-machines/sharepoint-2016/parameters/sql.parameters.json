@@ -42,7 +42,7 @@
             "nicIndex": 0
           }
         ],
-        "inboundNatRules": [ ]
+        "inboundNatRules": []
       }
     },
     "virtualMachinesSettings": {
@@ -66,7 +66,8 @@
             "domainNameLabelPrefix": "",
             "dnsServers": [
               "10.0.4.4",
-              "10.0.4.5"
+              "10.0.4.5",
+              "168.63.129.16"
             ]
           }
         ],
@@ -128,4 +129,3 @@
     }
   }
 }
-

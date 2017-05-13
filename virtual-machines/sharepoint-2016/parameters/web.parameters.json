@@ -74,7 +74,11 @@
             "startingIPAddress": "10.0.1.4",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
-            "dnsServers": []
+            "dnsServers": [
+              "10.0.4.4",
+              "10.0.4.5",
+              "168.63.129.16"
+            ]
           }
         ],
         "imageReference": {
