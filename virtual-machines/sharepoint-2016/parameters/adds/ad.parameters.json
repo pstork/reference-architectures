@@ -21,10 +21,7 @@
             "startingIPAddress": "10.0.4.4",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
-            "dnsServers": [
-              "10.0.4.4",
-              "10.0.4.5"
-            ]
+            "dnsServers": []
           }
         ],
         "imageReference": {
