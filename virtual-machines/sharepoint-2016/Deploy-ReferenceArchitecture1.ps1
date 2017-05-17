@@ -45,7 +45,7 @@ $addAddsDomainControllerExtensionParametersFile = [System.IO.Path]::Combine($PSS
 $createAddsDomainControllerForestExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\adds\create-adds-forest-extension.parameters.json")
 
 # SQL Always On Parameter Files
-$sqlParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\sql.parameters.json")
+$sqlParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\sql1.parameters.json")
 $fswParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\fsw.parameters.json")
 $sqlPrepareAOExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\sql-iaas-ao-extensions.parameters.json")
 $sqlConfigureAOExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\sql-configure-ao-extension.parameters.json")

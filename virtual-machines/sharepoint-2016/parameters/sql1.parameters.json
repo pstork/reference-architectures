@@ -1,0 +1,108 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "loadBalancerSettings": {
+      "value": {
+        "name": "ra-sp2016-sql-lb",
+        "frontendIPConfigurations": [
+          {
+            "name": "ra-sp2016-sql-lbfe1",
+            "loadBalancerType": "internal",
+            "domainNameLabel": "",
+            "internalLoadBalancerSettings": {
+              "privateIPAddress": "10.0.3.100",
+              "subnetName": "sql"
+            }
+          }
+        ],
+        "loadBalancingRules": [
+          {
+            "name": "SQLAlwaysOnEndPointListener",
+            "frontendPort": 1433,
+            "backendPort": 1433,
+            "protocol": "Tcp",
+            "backendPoolName": "ra-sp2016-sql-lb-bep1",
+            "frontendIPConfigurationName": "ra-sp2016-sql-lbfe1",
+            "enableFloatingIP": true,
+            "probeName": "ra-sp2016-sql-lbp1"
+          }
+        ],
+        "probes": [
+          {
+            "name": "ra-sp2016-sql-lbp1",
+            "port": 59999,
+            "protocol": "Tcp",
+            "requestPath": null
+          }
+        ],
+        "backendPools": [
+          {
+            "name": "ra-sp2016-sql-lb-bep1",
+            "nicIndex": 0
+          }
+        ],
+        "inboundNatRules": []
+      }
+    },
+    "virtualMachinesSettings": {
+      "value": {
+        "namePrefix": "ra-sp2016-sql",
+        "computerNamePrefix": "sql",
+        "size": "Standard_DS1_v2",
+        "osType": "windows",
+        "adminUsername": "testuser",
+        "adminPassword": "AweS0me@PW",
+        "sshPublicKey": "",
+        "osAuthenticationType": "password",
+        "nics": [
+          {
+            "isPublic": "false",
+            "isPrimary": "true",
+            "subnetName": "sql",
+            "privateIPAllocationMethod": "static",
+            "startingIPAddress": "10.0.3.4",
+            "enableIPForwarding": false,
+            "domainNameLabelPrefix": "",
+            "dnsServers": []
+          }
+        ],
+        "imageReference": {
+          "publisher": "MicrosoftSQLServer",
+          "offer": "SQL2014SP1-WS2012R2",
+          "sku": "Enterprise",
+          "version": "latest"
+        },
+        "dataDisks": {
+          "count": 2,
+          "properties": {
+            "diskSizeGB": 1000,
+            "caching": "ReadOnly",
+            "createOption": "Empty"
+          }
+        },
+        "osDisk": {
+          "caching": "ReadWrite"
+        },
+        "extensions": [],
+        "availabilitySet": {
+          "useExistingAvailabilitySet": "No",
+          "name": "sql-as"
+        }
+      }
+    },
+    "virtualNetworkSettings": {
+      "value": {
+        "name": "ra-sp2016-vnet",
+        "resourceGroup": "ra-sp2016-network-rg"
+      }
+    },
+    "buildingBlockSettings": {
+      "value": {
+        "storageAccountsCount": 2,
+        "vmCount": 2,
+        "vmStartIndex": 1
+      }
+    }
+  }
+}
