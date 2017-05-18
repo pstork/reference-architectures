@@ -59,12 +59,12 @@ $appVirtualMachineParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "par
 $webLoadBalancerParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\web1.parameters.json")
 $dchVirtualMachineParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\dch1.parameters.json")
 $srchVirtualMachineParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\srch1.parameters.json")
-$createFarmApp1ExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "spt-create-farm-app1-ext.parameters.json")
-$configFarmDCH1ExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "spt-config-farm-dch1-ext.parameters.json")
-$configFarmWFE1SRCH1ExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "spt-config-farm-wfe1-srch1-ext.parameters.json")
-$configFarmWfe2App2ExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "spt-config-farm-wfe2-app2-ext.parameters.json")
-$configFarmDch2Srch2ExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "spt-config-farm-dch2-srch2-ext.parameters.json")
-$addArecordExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "add-dns-arecord.parameters.json")
+$createFarmApp1ExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\spt-create-farm-app1-ext.parameters.json")
+$configFarmDCH1ExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\spt-config-farm-dch1-ext.parameters.json")
+$configFarmWFE1SRCH1ExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\spt-config-farm-wfe1-srch1-ext.parameters.json")
+$configFarmWfe2App2ExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\spt-config-farm-wfe2-app2-ext.parameters.json")
+$configFarmDch2Srch2ExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\spt-config-farm-dch2-srch2-ext.parameters.json")
+$addArecordExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\add-dns-arecord.parameters.json")
 $networkSecurityGroupParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\networkSecurityGroups.parameters.json")
 
 
