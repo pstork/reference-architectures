@@ -5,7 +5,9 @@
     "virtualMachinesExtensionSettings": {
       "value": [
         {
-          "vms": [ "ra-sp2016-app-vm1" ],
+          "vms": [
+            "ra-sp2016-app-vm1"
+          ],
           "extensions": [
             {
               "name": "configSPservers",
@@ -55,7 +57,6 @@
                   "WebPoolManagedAccount": "AweS0me@PW"
                 }
               }
-
             }
           ]
         }
