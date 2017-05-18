@@ -149,9 +149,9 @@ elseif ($Mode -eq "Workload")
 #        -TemplateParameterFile $dchVirtualMachineParametersFile
         
     Write-Host "Deploy Search servers ..."
-    New-AzureRmResourceGroupDeployment -Name "ra-sp2016-srch-deployment" `
-        -ResourceGroupName $workloadResourceGroup.ResourceGroupName -TemplateUri $virtualMachineTemplate.AbsoluteUri `
-        -TemplateParameterFile $srchVirtualMachineParametersFile
+ #   New-AzureRmResourceGroupDeployment -Name "ra-sp2016-srch-deployment" `
+ #       -ResourceGroupName $workloadResourceGroup.ResourceGroupName -TemplateUri $virtualMachineTemplate.AbsoluteUri `
+ #       -TemplateParameterFile $srchVirtualMachineParametersFile
 
     Write-Host "Creating SharePoint Farm on App1 ..."
     New-AzureRmResourceGroupDeployment -Name "ra-sp2016-create-farm-App1-ext" `
