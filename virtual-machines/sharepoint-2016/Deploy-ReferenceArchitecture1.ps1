@@ -131,6 +131,7 @@ elseif ($Mode -eq "Workload")
 {
     Write-Host "Creating workload resource group..."
  #   $workloadResourceGroup = New-AzureRmResourceGroup -Name $workloadResourceGroupName -Location $Location
+ $workloadResourceGroup = Get-AzureRmResourceGroup -Name $workloadResourceGroupName -Location $Location
 
     Write-Host "Deploy Applictation servers ..."
 #    New-AzureRmResourceGroupDeployment -Name "ra-sp2016-app-deployment" `
