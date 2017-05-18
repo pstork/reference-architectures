@@ -130,27 +130,27 @@ if ($Mode -eq "Infrastructure")
 elseif ($Mode -eq "Workload")
 {
     Write-Host "Creating workload resource group..."
-    $workloadResourceGroup = New-AzureRmResourceGroup -Name $workloadResourceGroupName -Location $Location
+ #   $workloadResourceGroup = New-AzureRmResourceGroup -Name $workloadResourceGroupName -Location $Location
 
     Write-Host "Deploy Applictation servers ..."
-    New-AzureRmResourceGroupDeployment -Name "ra-sp2016-app-deployment" `
-        -ResourceGroupName $workloadResourceGroup.ResourceGroupName -TemplateUri $virtualMachineTemplate.AbsoluteUri `
-        -TemplateParameterFile $appVirtualMachineParametersFile
+#    New-AzureRmResourceGroupDeployment -Name "ra-sp2016-app-deployment" `
+#        -ResourceGroupName $workloadResourceGroup.ResourceGroupName -TemplateUri $virtualMachineTemplate.AbsoluteUri `
+#        -TemplateParameterFile $appVirtualMachineParametersFile
 
     Write-Host "Deploy WebFrontEnd servers with load balancer..."
-    New-AzureRmResourceGroupDeployment -Name "ra-sp2016-web-deployment" `
-        -ResourceGroupName $workloadResourceGroup.ResourceGroupName -TemplateUri $loadBalancerTemplate.AbsoluteUri `
-        -TemplateParameterFile $webLoadBalancerParametersFile
+#    New-AzureRmResourceGroupDeployment -Name "ra-sp2016-web-deployment" `
+#        -ResourceGroupName $workloadResourceGroup.ResourceGroupName -TemplateUri $loadBalancerTemplate.AbsoluteUri `
+#        -TemplateParameterFile $webLoadBalancerParametersFile
         
     Write-Host "Deploy DistributedCache servers ..."
-    New-AzureRmResourceGroupDeployment -Name "ra-sp2016-dch-deployment" `
-        -ResourceGroupName $workloadResourceGroup.ResourceGroupName -TemplateUri $virtualMachineTemplate.AbsoluteUri `
-        -TemplateParameterFile $dchVirtualMachineParametersFile
+#    New-AzureRmResourceGroupDeployment -Name "ra-sp2016-dch-deployment" `
+#        -ResourceGroupName $workloadResourceGroup.ResourceGroupName -TemplateUri $virtualMachineTemplate.AbsoluteUri `
+#        -TemplateParameterFile $dchVirtualMachineParametersFile
         
     Write-Host "Deploy Search servers ..."
     New-AzureRmResourceGroupDeployment -Name "ra-sp2016-srch-deployment" `
         -ResourceGroupName $workloadResourceGroup.ResourceGroupName -TemplateUri $virtualMachineTemplate.AbsoluteUri `
-        -TemplateParameterFile $srchVirtualMachineParametersF
+        -TemplateParameterFile $srchVirtualMachineParametersFile
 
     Write-Host "Creating SharePoint Farm on App1 ..."
     New-AzureRmResourceGroupDeployment -Name "ra-sp2016-create-farm-App1-ext" `
