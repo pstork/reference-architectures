@@ -17,8 +17,9 @@
             "isPublic": "false",
             "isPrimary": "true",
             "subnetName": "sql",
-            "privateIPAllocationMethod": "Dynamic",
-            "enableIPForwarding": false,
+            "privateIPAllocationMethod": "static",
+            "startingIPAddress": "10.0.3.6",
+             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
             "dnsServers": []
           }
