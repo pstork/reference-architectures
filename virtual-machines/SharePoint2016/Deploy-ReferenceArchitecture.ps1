@@ -30,7 +30,7 @@ $templateRootUri = New-Object System.Uri -ArgumentList @($templateRootUriString)
 
 $loadBalancerTemplate = New-Object System.Uri -ArgumentList @($templateRootUri, "templates/buildingBlocks/loadBalancer-backend-n-vm/azuredeploy.json")
 $virtualNetworkTemplate = New-Object System.Uri -ArgumentList @($templateRootUri, "templates/buildingBlocks/vnet-n-subnet/azuredeploy.json")
-$virtualMachineTemplate = New-Object System.Uri -ArgumentList @("https://raw.githubusercontent.com/pstork/template-building-blocks/pstork/SharePoint2016/", "templates/buildingBlocks/multi-vm-n-nic-m-storage/azuredeploy.json")
+$virtualMachineTemplate = New-Object System.Uri -ArgumentList @("https://raw.githubusercontent.com/pstork/template-building-blocks/pstork/SharePoint2016/templates/buildingBlocks/multi-vm-n-nic-m-storage/azuredeploy.json")
 $virtualMachineExtensionsTemplate = New-Object System.Uri -ArgumentList @($templateRootUri, "templates/buildingBlocks/virtualMachine-extensions/azuredeploy.json")
 $networkSecurityGroupTemplate = New-Object System.Uri -ArgumentList @($templateRootUri, "templates/buildingBlocks/networkSecurityGroups/azuredeploy.json")
 
